@@ -2,5 +2,7 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_email">#80FFFFFF</color>
+    <color name="borderColor">#801E4061</color>
     <color name="bcolorMain">#031B39</color>
 </resources>

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">ReSaPras</string>
-    <string name="resapras">ReSaPras</string>
+    <string name="resarpras">ReSarPras</string>
+    <string name="username">Username</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="daftar_laporan">Daftar Laporan</string>
+    <string name="buat_laporan">Buat Laporan</string>
 </resources>
