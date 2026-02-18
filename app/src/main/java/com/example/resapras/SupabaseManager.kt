@@ -1,0 +1,14 @@
+import io.github.jan.supabase.createSupabaseClient
+import io.github.jan.supabase.auth.Auth
+import io.github.jan.supabase.postgrest.Postgrest
+import com.example.resapras.BuildConfig // Pastikan package name benar
+
+object SupabaseManager {
+    val client = createSupabaseClient(
+        supabaseUrl = BuildConfig.SUPABASE_URL,
+        supabaseKey = BuildConfig.SUPABASE_KEY
+    ) {
+        install(Auth)
+        install(Postgrest)
+    }
+}
