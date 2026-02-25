@@ -8,22 +8,76 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".DashboardScreen">
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:fitsSystemWindows="true">
-        <include
-            android:id="@+id/toolbarLayout"
-            layout="@layout/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/bcolorMain">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:fitsSystemWindows="true">
+            <include
+                android:id="@+id/toolbarLayout"
+                layout="@layout/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bcolorMain">
+                <!-- height will adapt to children -->
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/table_border"
+                    android:layout_margin="10dp"
+                    android:stretchColumns="0,1"
+                    android:clipToOutline="true">
+
+                    <TableRow
+                        android:padding="2dp">
+                        <TextView
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:layout_span="2"
+                            android:text="Dashboard"
+                            android:textColor="@color/white"
+                            android:textAlignment="center"/>
+                    </TableRow>
+                    <View
+                        android:background="@color/borderColor"
+                        android:layout_height="2dp"
+                        android:layout_width="match_parent"/>
+                    <TableRow>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="111dp"
+                            android:layout_weight="1"
+                            android:background="@color/black">
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:padding="14dp"
+                                android:background="@color/white_email">
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="11dp"
+                            android:layout_weight="1"
+                            android:background="@color/white_email">
+
+                        </LinearLayout>
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </ScrollView>
+
+
     <RelativeLayout
         android:layout_width="320dp"
         android:layout_height="match_parent"
