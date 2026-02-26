@@ -62,7 +62,7 @@ dependencies {
     implementation("io.github.jan-tennert.supabase:auth-kt")      // Login/Auth
 
     // HTTP Client (Pilih salah satu, OkHttp disarankan untuk Android)
-    implementation("io.ktor:ktor-client-okhttp")
+    implementation("io.ktor:ktor-client-okhttp:2.3.7")
 
     // Serialization (Penting untuk parsing data)
     implementation("io.github.jan-tennert.supabase:compose-auth") // Jika pakai Compose
