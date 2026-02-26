@@ -18,6 +18,15 @@
     <string name="laporan_ditindak">Laporan ditindak</string>
     <string name="laporan_ditolak">Laporan ditolak</string>
     <string name="buat_laporan_baru">+ Laporan Baru</string>
-
     <string name="placeholder_num">78</string>
+    <string name="rsp">RSP</string>
+    <string name="nama">Nama Lengkap</string>
+    <string name="ph_nama">Masukan Nama Lengkap</string>
+    <string name="email">Email</string>
+    <string name="ph_email">Masukan Email</string>
+    <string name="no_handphone">No. Handphone"</string>
+    <string name="ph_no_handphone">Masukan No. Handphone</string>
+    <string name="sandi">Sandi</string>
+    <string name="ph_sandi">Masukan Sandi"</string>
+    <string name="register">Register</string>
 </resources>
