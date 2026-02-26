@@ -7,7 +7,7 @@ plugins {
 android {
     namespace = "com.example.resapras"
     compileSdk {
-        version = release(36)
+        version = release(34)
     }
 
     buildFeatures {
