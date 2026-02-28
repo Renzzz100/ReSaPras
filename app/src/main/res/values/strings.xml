@@ -29,4 +29,5 @@
     <string name="sandi">Sandi</string>
     <string name="ph_sandi">Masukan Sandi"</string>
     <string name="register">Register</string>
+    <string name="login">Log in</string>
 </resources>
