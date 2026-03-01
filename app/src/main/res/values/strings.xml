@@ -5,5 +5,19 @@
     <string name="example_gmail_com">example@gmail.com</string>
     <string name="dashboard">Dashboard</string>
     <string name="daftar_laporan">Daftar Laporan</string>
+    <string name="laporan_baru">Laporan Baru</string>
+    <string name="diproses">Diproses</string>
+    <string name="selesai">Selesai</string>
+    <string name="ditolak">Ditolak</string>
+    <string name="atur_cept">Atur Cepat</string>
     <string name="buat_laporan">Buat Laporan</string>
+    <string name="lihat_semua">Lihat Semua</string>
+    <string name="total_laporan">Total Laporan</string>
+    <string name="laporan_belum_diverifikasi">Laporan Belum Diverifikasi</string>
+    <string name="laporan_diproses">Laporan diproses</string>
+    <string name="laporan_ditindak">Laporan ditindak</string>
+    <string name="laporan_ditolak">Laporan ditolak</string>
+    <string name="buat_laporan_baru">+ Laporan Baru</string>
+
+    <string name="placeholder_num">78</string>
 </resources>

@@ -3,6 +3,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_email">#80FFFFFF</color>
-    <color name="borderColor">#801E4061</color>
     <color name="bcolorMain">#031B39</color>
+    <color name="tableColor">#0F2854</color>
+    <color name="borderColor">#52739D</color>
+    <color name="cyan1">#6898CD</color>
 </resources>
