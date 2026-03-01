@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.Button
 import android.widget.LinearLayout
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +21,8 @@ class ProfileScreen : AppCompatActivity() {
     private lateinit var dashboardNav : LinearLayout
     private lateinit var daftarLaporanNav : LinearLayout
     private lateinit var buatLaporanNav : LinearLayout
+
+    private lateinit var btnKeluarAkun: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +44,10 @@ class ProfileScreen : AppCompatActivity() {
         }
         daftarLaporanNav.setOnClickListener {
             val intent = Intent(this, DaftarLaporan::class.java)
+            startActivity(intent)
+        }
+        btnKeluarAkun.setOnClickListener {
+            val intent = intent(this, ::class.java)
             startActivity(intent)
         }
     }

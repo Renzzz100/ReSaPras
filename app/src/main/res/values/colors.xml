@@ -7,4 +7,7 @@
     <color name="bcolorMain">#031B39</color>
     <color name="tableColor">#0F2854</color>
     <color name="borderColor">#52739D</color>
+    <color name="green">#4CAF50</color>
+    <color name="red">#FF0000</color>
+
 </resources>
