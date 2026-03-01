@@ -30,4 +30,9 @@
     <string name="register">Register</string>
     <string name="login">Log in</string>
     <string name="placeholder_num">78</string>
+    <string name="_2026_01_12_09_22_12">2026-01-12 09:22:12</string>
+    <string name="rpt_2026_000031">RPT-2026-000031</string>
+    <string name="pencemaran">Pencemaran</string>
+    <string name="tinggi">Tinggi</string>
+    <string name="detail">Detail</string>
 </resources>
