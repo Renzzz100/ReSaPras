@@ -1,0 +1,41 @@
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n    <color name=\"black\">#FF000000</color>\n    <color name=\"white\">#FFFFFFFF</color>\n    <color name=\"white_email\">#80FFFFFF</color>\n    <color name=\"borderColor\">#801E4061</color>\n    <color name=\"bcolorMain\">#031B39</color>\n</resources>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+--- a/app/src/main/res/values/colors.xml	(revision 29dfefbc59b9c021f0ac8b9e60fdabe5ba2b5d09)
++++ b/app/src/main/res/values/colors.xml	(date 1772427247624)
+@@ -5,4 +5,5 @@
+     <color name="white_email">#80FFFFFF</color>
+     <color name="borderColor">#801E4061</color>
+     <color name="bcolorMain">#031B39</color>
++    <color name="cyan1">#6898CD</color>
+ </resources>
+Index: app/src/main/res/drawable/buat_laporan_button.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/drawable/buat_laporan_button.xml b/app/src/main/res/drawable/buat_laporan_button.xml
+new file mode 100644
+--- /dev/null	(date 1772426414087)
++++ b/app/src/main/res/drawable/buat_laporan_button.xml	(date 1772426414087)
+@@ -0,0 +1,14 @@
++<shape xmlns:android="http://schemas.android.com/apk/res/android">
++
++    <!-- Background color -->
++    <solid android:color="@color/cyan1"/>
++
++    <!-- Border -->
++    <stroke
++        android:width="2dp"
++        android:color="@color/borderColor"/>
++
++    <!-- Optional rounded corners -->
++    <corners android:radius="8dp"/>
++
++</shape>
+\ No newline at end of file

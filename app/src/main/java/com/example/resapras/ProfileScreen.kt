@@ -47,7 +47,7 @@ class ProfileScreen : AppCompatActivity() {
             startActivity(intent)
         }
         btnKeluarAkun.setOnClickListener {
-            val intent = intent(this, ::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
     }
