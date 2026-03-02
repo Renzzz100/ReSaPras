@@ -30,8 +30,12 @@ class ProfileScreen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        initViews()
-
+        drawerLayout = findViewById(R.id.drawerLayout);
+        drawerMenu = findViewById(R.id.drawerMenu);
+        profileImg = findViewById(R.id.profileImg)
+        dashboardNav = findViewById(R.id.dashboardNav)
+        daftarLaporanNav = findViewById(R.id.daftarlaporanNav)
+//        profileImg.visibility = View.GONE
         drawerMenu.setOnClickListener {
             openDrawer(drawerLayout)
         }
@@ -43,14 +47,6 @@ class ProfileScreen : AppCompatActivity() {
             val intent = Intent(this, DaftarLaporan::class.java)
             startActivity(intent)
         }
-    }
-    private fun initViews(){
-        drawerLayout = findViewById(R.id.drawerLayout);
-        drawerMenu = findViewById(R.id.drawerMenu);
-        profileImg = findViewById(R.id.profileImg)
-        dashboardNav = findViewById(R.id.dashboardNav)
-        daftarLaporanNav = findViewById(R.id.daftarlaporanNav)
-        profileImg.visibility = View.GONE
     }
     private fun openDrawer(drawerLayout: DrawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);
