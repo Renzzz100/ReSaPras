@@ -24,8 +24,8 @@ class ProfileScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.profilescreen)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.drawerLayout)) { v, insets ->
+        setContentView(R.layout.profile_screen)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.profileScreen)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -45,7 +45,7 @@ class ProfileScreen : AppCompatActivity() {
         }
     }
     private fun initViews(){
-        drawerLayout = findViewById(R.id.drawerLayout);
+        drawerLayout = findViewById(R.id.profileScreen);
         drawerMenu = findViewById(R.id.drawerMenu);
         profileImg = findViewById(R.id.profileImg)
         dashboardNav = findViewById(R.id.dashboardNav)
