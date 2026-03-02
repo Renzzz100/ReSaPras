@@ -16,7 +16,6 @@ class LaporanRepository {
         }.decodeList<Laporan>()
     }
 
-    // ✅ fungsi ini wajib ada
     suspend fun getLaporanById(id: Long): Laporan {
         return supabase.from("laporan").select() {
             filter { eq("id", id) }
@@ -58,7 +57,6 @@ class LaporanRepository {
         }
     }
 
-    // ✅ fungsi ini wajib ada
     suspend fun verifikasiLaporan(id: Long, verifikatorId: Long) {
         supabase.from("laporan").update({
             set("status", "diverifikasi")
@@ -69,7 +67,6 @@ class LaporanRepository {
         }
     }
 
-    // ✅ fungsi ini wajib ada
     suspend fun tolakLaporan(id: Long, penutupId: Long, alasan: String) {
         supabase.from("laporan").update({
             set("status", "ditolak")
@@ -81,7 +78,6 @@ class LaporanRepository {
         }
     }
 
-    // ✅ fungsi ini wajib ada
     suspend fun tutupLaporan(id: Long, penutupId: Long) {
         supabase.from("laporan").update({
             set("status", "selesai")
