@@ -16,7 +16,6 @@ class DashboardScreen : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var drawerMenu: ImageView
     private lateinit var profileImg : ImageView
-    private lateinit var dashboardNav : LinearLayout
     private lateinit var daftarLaporanNav : LinearLayout
     private lateinit var buatLaporanNav : LinearLayout
 
@@ -29,8 +28,8 @@ class DashboardScreen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        drawerLayout = findViewById(R.id.drawerLayout);
-        drawerMenu = findViewById(R.id.drawerMenu);
+        drawerLayout = findViewById(R.id.drawerLayout)
+        drawerMenu = findViewById(R.id.drawerMenu)
         profileImg = findViewById(R.id.profileImg)
         daftarLaporanNav = findViewById(R.id.daftarlaporanNav)
 
@@ -47,11 +46,11 @@ class DashboardScreen : AppCompatActivity() {
         }
     }
     private fun openDrawer(drawerLayout: DrawerLayout){
-        drawerLayout.openDrawer(GravityCompat.START);
+        drawerLayout.openDrawer(GravityCompat.START)
     }
     private fun closeDrawer(drawerLayout: DrawerLayout){
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
+            drawerLayout.closeDrawer(GravityCompat.START)
         }
     }
 }
