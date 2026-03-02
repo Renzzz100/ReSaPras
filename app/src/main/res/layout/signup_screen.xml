@@ -51,7 +51,8 @@
             android:textColorHint="@color/white_email"
             android:textSize="16sp"
             android:layout_marginBottom="18dp"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName"
+            android:minHeight="48dp"/>
 
         <TextView
             android:id="@+id/email"
@@ -70,7 +71,8 @@
             android:textColorHint="@color/white_email"
             android:textSize="16sp"
             android:layout_marginBottom="18dp"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:minHeight="48dp"/>
 
         <TextView
             android:id="@+id/no_handphone"
@@ -89,7 +91,8 @@
             android:textColorHint="@color/white_email"
             android:textSize="16sp"
             android:layout_marginBottom="18dp"
-            android:inputType="phone"/>
+            android:inputType="phone"
+            android:minHeight="48dp"/>
 
         <TextView
             android:id="@+id/sandi"
@@ -108,10 +111,11 @@
             android:textColorHint="@color/white_email"
             android:textSize="16sp"
             android:layout_marginBottom="18dp"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword"
+            android:minHeight="48dp"/>
 
         <Button
-            android:id="@+id/buttonRegister"
+            android:id="@+id/btnsignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/register"
