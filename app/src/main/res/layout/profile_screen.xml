@@ -20,6 +20,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/bcolorMain">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Profile Screen"
+                android:textColor="@color/white"/>
         </LinearLayout>
     </LinearLayout>
     <RelativeLayout
@@ -29,7 +34,6 @@
         android:fitsSystemWindows="true"
         android:background="@color/bcolorMain">
         <include
-            android:id="@+id/drawerNavLayout"
             layout="@layout/drawer_nav" />
     </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

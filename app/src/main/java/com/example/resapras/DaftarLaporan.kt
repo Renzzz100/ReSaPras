@@ -37,10 +37,6 @@ class DaftarLaporan : AppCompatActivity() {
         drawerMenu.setOnClickListener {
             openDrawer(drawerLayout)
         }
-        profileImg.setOnClickListener {
-            val intent = Intent(this, ProfileScreen::class.java)
-            startActivity(intent)
-        }
         dashboardNav.setOnClickListener {
             val intent = Intent(this, DashboardScreen::class.java)
             startActivity(intent)
