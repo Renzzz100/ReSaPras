@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg_gradient">
-
-
+    android:background="@drawable/bg_gradient"
+    android:id="@+id/loginScreen">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:padding="24dp">
+        android:padding="24dp"
+        tools:ignore="MissingConstraints">
 
         <ImageView
             android:id="@+id/logo"
@@ -34,25 +33,6 @@
             android:fontFamily="@font/rsp"/>
 
         <TextView
-            android:id="@+id/nama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/nama"
-            android:textSize="18sp"
-            android:textColor="@color/white"/>
-        <EditText
-            android:id="@+id/ph_nama"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/ph_nama"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white_email"
-            android:textSize="16sp"
-            android:layout_marginBottom="18dp"
-            android:inputType="textPersonName"/>
-
-        <TextView
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -71,24 +51,6 @@
             android:layout_marginBottom="18dp"
             android:inputType="textEmailAddress"/>
 
-        <TextView
-            android:id="@+id/no_handphone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/no_handphone"
-            android:textSize="18sp"
-            android:textColor="@color/white"/>
-        <EditText
-            android:id="@+id/ph_no_handphone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/ph_no_handphone"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white_email"
-            android:textSize="16sp"
-            android:layout_marginBottom="18dp"
-            android:inputType="phone"/>
 
         <TextView
             android:id="@+id/sandi"
@@ -110,15 +72,34 @@
             android:inputType="textPassword"/>
 
         <Button
-            android:id="@+id/buttonRegister"
+            android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/register"
+            android:text="@string/login"
             android:layout_marginTop="15dp"
             android:backgroundTint="#52739D"
             android:textColor="@color/white"
             android:textSize="20sp"/>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Belum punya akun?"
+                android:textColor="@color/white"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/signUptext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Sign Up"
+                android:layout_weight="24"
+                android:textColor="@color/white"/>
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

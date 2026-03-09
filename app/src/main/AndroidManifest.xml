@@ -12,13 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ReSaPras">
         <activity
+            android:name=".SignUpScreen"
+            android:exported="false" />
+        <activity
+            android:name=".DashboardScreen"
+            android:exported="false" />
+        <activity
             android:name=".ProfileScreen"
             android:exported="false" />
         <activity
             android:name=".DaftarLaporan"
             android:exported="false" />
         <activity
-            android:name=".DashboardScreen"
+            android:name=".LoginScreen"
             android:exported="true"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
             <intent-filter>
