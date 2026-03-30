@@ -33,15 +33,23 @@ class DaftarLaporan : AppCompatActivity() {
         drawerMenu = findViewById(R.id.drawerMenu);
         profileImg = findViewById(R.id.profileImg)
         dashboardNav = findViewById(R.id.dashboardNav)
+        buatLaporanNav = findViewById(R.id.buatlaporanNav)
 
         drawerMenu.setOnClickListener {
             openDrawer(drawerLayout)
+        }
+        profileImg.setOnClickListener {
+            val intent = Intent(this, ProfileScreen::class.java)
+            startActivity(intent)
         }
         dashboardNav.setOnClickListener {
             val intent = Intent(this, DashboardScreen::class.java)
             startActivity(intent)
         }
-
+        buatLaporanNav.setOnClickListener {
+            val intent = Intent(this, BuatlaporanScreen::class.java)
+            startActivity(intent)
+        }
     }
     private fun openDrawer(drawerLayout: DrawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);

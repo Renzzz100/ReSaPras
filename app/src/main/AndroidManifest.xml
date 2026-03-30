@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ReSaPras">
         <activity
+            android:name=".BuatlaporanScreen"
+            android:exported="false" />
+        <activity
             android:name=".SignUpScreen"
             android:exported="false" />
         <activity
