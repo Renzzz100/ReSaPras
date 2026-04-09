@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ReSaPras">
         <activity
+            android:name=".DetaillaporanScreen"
+            android:exported="false" />
+        <activity
             android:name=".BuatlaporanScreen"
             android:exported="false" />
         <activity
@@ -28,15 +31,17 @@
             android:exported="false" />
         <activity
             android:name=".LoginScreen"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.App.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
