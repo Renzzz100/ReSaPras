@@ -7,7 +7,7 @@
     android:id="@+id/signUpScreen">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +19,8 @@
             android:layout_height="160dp"
             android:layout_gravity="center"
             android:src="@drawable/logo"
-            android:contentDescription="@null"/>
+            android:contentDescription="@null"
+            android:layout_marginTop="30dp"/>
 
         <TextView
             android:id="@+id/rsp"
@@ -88,7 +89,6 @@
             android:textSize="16sp"
             android:layout_marginBottom="18dp"
             android:inputType="phone"/>
-
         <TextView
             android:id="@+id/sandi"
             android:layout_width="match_parent"
@@ -96,18 +96,43 @@
             android:text="@string/sandi"
             android:textSize="16sp"
             android:textColor="@color/white"/>
-        <EditText
-            android:id="@+id/ph_sandi"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/ph_sandi"
-            android:backgroundTint="@color/white"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white_email"
-            android:textSize="16sp"
-            android:layout_marginBottom="18dp"
-            android:inputType="textPassword"/>
-
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_password"
+                android:paddingStart="-12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="18dp"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/white"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:boxBackgroundColor="@android:color/transparent"
+                app:hintEnabled="false">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ph_sandi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/ph_sandi"
+                    android:background="@null"
+                    android:backgroundTint="@color/white"
+                    android:inputType="textPassword"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white_email"
+                    android:textAlignment="viewStart"
+                    android:textSize="16sp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white"
+                android:layout_marginTop="-32dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
+        </LinearLayout>
         <Button
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
@@ -117,7 +142,18 @@
             android:backgroundTint="#52739D"
             android:textColor="@color/white"
             android:textSize="20sp"/>
-
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
+        <TextView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\u003C Back"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/poppins_regular"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
