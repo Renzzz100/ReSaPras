@@ -16,6 +16,7 @@ class BuatlaporanScreen : AppCompatActivity() {
     private lateinit var drawerMenu: ImageView
     private lateinit var profileImg : ImageView
     private lateinit var dashboardNav : LinearLayout
+
     private lateinit var daftarLaporanNav : LinearLayout
     private lateinit var buatLaporanNav : LinearLayout
 
