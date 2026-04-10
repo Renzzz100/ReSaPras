@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuatLaporanScreen">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true">
+    <include
+        android:id="@+id/toolbarLayout"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bcolorMain"
+        >
+        
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/br15"
+            android:layout_marginHorizontal="14dp"
+            android:layout_marginTop="14dp"
+            >
+            <TextView
+                android:id="@+id/buat_laporan_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="2dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/dashboard"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <View
+                android:id="@+id/buat_laporan_view"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/borderColor"
+                app:layout_constraintTop_toBottomOf="@id/buat_laporan_text"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/buat_laporan_judul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/br12"
+                android:layout_margin="14dp"
+                app:layout_constraintTop_toBottomOf="@id/buat_laporan_view"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Nama Lengkap"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/borderColor"/>
+
+                <EditText
+                    android:id="@+id/buat_laporan_input_judul"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:hint="Wanto Ari Wibowo"
+                    android:textColorHint="@color/borderColor"
+                    android:inputType="text"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buat_laporan_kategori"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/br12"
+                android:layout_margin="14dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/buat_laporan_judul">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Kategori"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/borderColor"/>
+
+                <EditText
+                    android:id="@+id/buat_laporan_input_kategori"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:hint="--Pilih Kategori--"
+                    android:textColorHint="@color/borderColor"
+                    android:inputType="text"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buat_laporan_lokasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/br12"
+                android:layout_margin="14dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/buat_laporan_kategori">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Lokasi"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/borderColor"/>
+
+                <EditText
+                    android:id="@+id/buat_laporan_input_lokasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:hint="Contoh: Kamar mandi gedung baru"
+                    android:textColorHint="@color/borderColor"
+                    android:inputType="text"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buat_laporan_prioritas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/br12"
+                android:layout_margin="14dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/buat_laporan_lokasi"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Prioritas"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/borderColor"/>
+
+                <EditText
+                    android:id="@+id/buat_laporan_input_prioritas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:hint="--Pilih tingkat prioritas--"
+                    android:textColorHint="@color/borderColor"
+                    android:inputType="text"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buat_laporan_deskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="144dp"
+                android:background="@drawable/br12"
+                android:layout_margin="14dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/buat_laporan_prioritas">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Deskripsi"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/borderColor"/>
+
+                <EditText
+                    android:id="@+id/buat_laporan_input_deskripsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginBottom="2dp"
+                    android:hint="Jelaskan sedetail mungkin"
+                    android:inputType="textMultiLine"
+                    android:textColorHint="@color/borderColor" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/buat_laporan_bukti"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/br12"
+                android:layout_margin="14dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/buat_laporan_deskripsi"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="Bukti"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/borderColor"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                <Button
+                    android:id="@+id/btnPickMedia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    app:backgroundTint="@null"
+                    android:background="@drawable/table_border"
+
+                    android:text="Pilih File"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:includeFontPadding="false"
+                    android:gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/ivPreview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:visibility="gone"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logo"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/buat_laporan_button"
+                android:layout_width="wrap_content"
+                android:layout_height="49dp"
+                app:layout_constraintTop_toBottomOf="@id/buat_laporan_bukti"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_margin="14dp"
+                android:background="@drawable/buat_laporan_button"
+                app:backgroundTint="@null"
+
+                android:text="@string/buat_laporan_baru"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_bold"
+                android:includeFontPadding="false"
+                android:gravity="center"
+                />
+
+            <Button
+                android:id="@+id/buat_laporan_batal_button"
+                android:layout_width="wrap_content"
+                android:layout_height="49dp"
+                app:layout_constraintTop_toBottomOf="@id/buat_laporan_bukti"
+                app:layout_constraintStart_toEndOf="@id/buat_laporan_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_margin="14dp"
+                android:background="@drawable/buat_laporan_batal_button"
+                app:backgroundTint="@null"
+
+                android:text="Batal"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins_bold"
+                android:includeFontPadding="false"
+                android:gravity="center"
+                />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+    </ScrollView>
+
+        </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
