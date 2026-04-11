@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bcolorMain">
+    android:background="@color/bcolorMain"
+    android:paddingBottom="24dp">
     <LinearLayout
         android:id="@+id/profileInfo"
         android:layout_width="match_parent"
@@ -90,4 +91,34 @@
             android:drawablePadding="20dp"
             android:layout_marginVertical="25dp"/>
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="20dp"/>
+    <TextView
+        android:id="@+id/rsp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/rsp"
+        android:textSize="60sp"
+        android:textColor="@color/white"
+        android:fontFamily="@font/rsp"
+        android:layout_marginBottom="50dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/cp_footer"
+        android:textSize="20sp"
+        android:textColor="@color/white_email"
+        android:textAlignment="center"/>
 </LinearLayout>
