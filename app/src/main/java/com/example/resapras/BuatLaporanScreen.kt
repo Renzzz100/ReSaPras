@@ -51,7 +51,7 @@ class BuatLaporanScreen : AppCompatActivity() {
             startActivity(intent)
         }
         buatLaporanNav.setOnClickListener {
-            val intent = Intent(this, BuatlaporanScreen::class.java)
+            val intent = Intent(this, BuatLaporanScreen::class.java)
             startActivity(intent)
         }
     }
