@@ -1,0 +1,502 @@
+Index: app/src/main/res/layout/dashboardscreen.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.drawerlayout.widget.DrawerLayout\r\n    xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:id=\"@+id/drawerLayout\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:fitsSystemWindows=\"true\"\r\n    tools:context=\".DashboardScreen\">\r\n\r\n    <ScrollView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\">\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\"\r\n            android:fitsSystemWindows=\"true\">\r\n            <include\r\n                android:id=\"@+id/toolbarLayout\"\r\n                layout=\"@layout/toolbar\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\" />\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:background=\"@color/bcolorMain\">\r\n\r\n                <GridLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_margin=\"11dp\"\r\n                    android:background=\"@drawable/table_border\"\r\n                    android:clipToOutline=\"true\"\r\n                    android:columnCount=\"2\">\r\n\r\n                    <TextView\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"match_parent\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"2\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"12dp\"\r\n                        android:layout_marginTop=\"5dp\"\r\n                        android:layout_marginBottom=\"2dp\"\r\n                        android:fontFamily=\"@font/poppins_bold\"\r\n                        android:text=\"@string/dashboard\"\r\n                        android:textColor=\"@color/white\" />\r\n\r\n                    <View\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"2dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"2\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:background=\"@color/borderColor\" />\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"139dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"1\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"12dp\"\r\n\r\n                        android:layout_marginTop=\"12dp\"\r\n                        android:layout_marginEnd=\"5dp\"\r\n                        android:layout_marginBottom=\"5dp\"\r\n                        android:background=\"@drawable/table_border\"\r\n\r\n                        android:clipToOutline=\"true\"\r\n                        android:columnCount=\"2\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/text_total_laporan\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n\r\n\r\n                            android:text=\"@string/total_laporan\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <View\r\n                            android:id=\"@+id/line_total_laporan\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"2dp\"\r\n                            android:background=\"@color/borderColor\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/text_total_laporan\" />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"@string/placeholder_num\"\r\n                            android:textSize=\"44sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:id=\"@+id/total_laporan\"\r\n                            android:includeFontPadding=\"false\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@id/line_total_laporan\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:layout_marginStart=\"22dp\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"@string/total_laporan\"\r\n                            android:textSize=\"18sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/total_laporan\"\r\n                            app:layout_constraintStart_toStartOf=\"@id/total_laporan\"\r\n                            />\r\n\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"139dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"1\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"5dp\"\r\n\r\n                        android:layout_marginTop=\"12dp\"\r\n                        android:layout_marginEnd=\"12dp\"\r\n                        android:layout_marginBottom=\"5dp\"\r\n                        android:background=\"@drawable/table_border\"\r\n\r\n                        android:clipToOutline=\"true\"\r\n                        android:columnCount=\"2\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/text_laporan_baru\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n\r\n                            android:text=\"@string/laporan_baru\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <View\r\n                            android:id=\"@+id/line_laporan_baru\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"2dp\"\r\n                            android:background=\"@color/borderColor\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/text_laporan_baru\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"78\"\r\n                            android:textSize=\"44sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:id=\"@+id/laporan_baru\"\r\n                            android:includeFontPadding=\"false\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@id/line_laporan_baru\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:layout_marginStart=\"22dp\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"112dp\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"@string/laporan_belum_diverifikasi\"\r\n                            android:textSize=\"11sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/laporan_baru\"\r\n                            app:layout_constraintStart_toStartOf=\"@id/laporan_baru\"\r\n                            android:layout_marginEnd=\"22dp\"\r\n                            />\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"139dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"1\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"12dp\"\r\n\r\n                        android:layout_marginTop=\"5dp\"\r\n                        android:layout_marginEnd=\"5dp\"\r\n                        android:layout_marginBottom=\"5dp\"\r\n                        android:background=\"@drawable/table_border\"\r\n\r\n                        android:clipToOutline=\"true\"\r\n                        android:columnCount=\"2\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/text_diproses\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n\r\n                            android:text=\"@string/diproses\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <View\r\n                            android:id=\"@+id/line_diproses\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"2dp\"\r\n                            android:background=\"@color/borderColor\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/text_diproses\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"78\"\r\n                            android:textSize=\"44sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:id=\"@+id/diproses\"\r\n                            android:includeFontPadding=\"false\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@id/line_diproses\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:layout_marginStart=\"22dp\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"@string/laporan_diproses\"\r\n                            android:textSize=\"14sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/diproses\"\r\n                            app:layout_constraintStart_toStartOf=\"@id/diproses\"\r\n                            />\r\n\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"139dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"1\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"5dp\"\r\n\r\n                        android:layout_marginTop=\"5dp\"\r\n                        android:layout_marginEnd=\"12dp\"\r\n                        android:layout_marginBottom=\"5dp\"\r\n                        android:background=\"@drawable/table_border\"\r\n\r\n                        android:clipToOutline=\"true\"\r\n                        android:columnCount=\"2\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/text_selesai\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n\r\n                            android:text=\"@string/selesai\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <View\r\n                            android:id=\"@+id/line_selesai\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"2dp\"\r\n                            android:background=\"@color/borderColor\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/text_selesai\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"78\"\r\n                            android:textSize=\"44sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:id=\"@+id/selesai\"\r\n                            android:includeFontPadding=\"false\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@id/line_selesai\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:layout_marginStart=\"22dp\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"@string/laporan_ditindak\"\r\n                            android:textSize=\"14sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/selesai\"\r\n                            app:layout_constraintStart_toStartOf=\"@id/selesai\"\r\n                            />\r\n\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"139dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"1\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"12dp\"\r\n\r\n                        android:layout_marginTop=\"5dp\"\r\n                        android:layout_marginEnd=\"5dp\"\r\n                        android:layout_marginBottom=\"12dp\"\r\n                        android:background=\"@drawable/table_border\"\r\n\r\n                        android:clipToOutline=\"true\"\r\n                        android:columnCount=\"2\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/text_ditolak\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n\r\n                            android:text=\"@string/ditolak\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <View\r\n                            android:id=\"@+id/line_ditolak\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"2dp\"\r\n                            android:background=\"@color/borderColor\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/text_ditolak\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"78\"\r\n                            android:textSize=\"44sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:id=\"@+id/ditolak\"\r\n                            android:includeFontPadding=\"false\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@id/line_ditolak\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:layout_marginStart=\"22dp\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"@string/laporan_ditolak\"\r\n                            android:textSize=\"14sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/ditolak\"\r\n                            app:layout_constraintStart_toStartOf=\"@id/ditolak\"\r\n                            />\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"139dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"1\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"5dp\"\r\n\r\n                        android:layout_marginTop=\"5dp\"\r\n                        android:layout_marginEnd=\"12dp\"\r\n                        android:layout_marginBottom=\"12dp\"\r\n                        android:background=\"@drawable/table_border\"\r\n\r\n                        android:clipToOutline=\"true\"\r\n                        android:columnCount=\"2\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/text_atur_cept\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n\r\n                            android:text=\"@string/atur_cept\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <View\r\n                            android:id=\"@+id/line_atur_cept\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"2dp\"\r\n                            android:background=\"@color/borderColor\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/text_atur_cept\"\r\n                            />\r\n\r\n                        <Button\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"32dp\"\r\n                            android:background=\"@drawable/buat_laporan_button\"\r\n                            app:backgroundTint=\"@null\"\r\n                            android:id=\"@+id/buat_laporan_button\"\r\n\r\n                            android:text=\"@string/laporan_baru\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:textSize=\"11sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:includeFontPadding=\"false\"\r\n                            android:gravity=\"center\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/line_atur_cept\"\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"17dp\"\r\n                            />\r\n                        <Button\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"32dp\"\r\n                            app:backgroundTint=\"@null\"\r\n                            android:background=\"@drawable/table_border\"\r\n                            android:id=\"@+id/lihat_semua_button\"\r\n\r\n                            android:text=\"Lihat Semua\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:textSize=\"11sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:includeFontPadding=\"false\"\r\n                            android:gravity=\"center\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginBottom=\"17dp\"\r\n                            />\r\n\r\n\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n\r\n                </GridLayout>\r\n            </LinearLayout>\r\n        </LinearLayout>\r\n    </ScrollView>\r\n\r\n\r\n\r\n    <ScrollView\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\">\r\n        <LinearLayout\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:orientation=\"vertical\"\r\n            android:fitsSystemWindows=\"true\">\r\n            <include\r\n                android:id=\"@+id/toolbarLayout\"\r\n                layout=\"@layout/toolbar\"\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\" />\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"wrap_content\"\r\n                android:background=\"@color/bcolorMain\">\r\n\r\n                <GridLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:layout_margin=\"11dp\"\r\n                    android:background=\"@drawable/table_border\"\r\n                    android:clipToOutline=\"true\"\r\n                    android:columnCount=\"2\">\r\n\r\n                    <TextView\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"match_parent\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"2\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"12dp\"\r\n                        android:layout_marginTop=\"5dp\"\r\n                        android:layout_marginBottom=\"2dp\"\r\n                        android:fontFamily=\"@font/poppins_bold\"\r\n                        android:text=\"@string/dashboard\"\r\n                        android:textColor=\"@color/white\" />\r\n\r\n                    <View\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"2dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"2\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:background=\"@color/borderColor\" />\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"139dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"1\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"12dp\"\r\n\r\n                        android:layout_marginTop=\"12dp\"\r\n                        android:layout_marginEnd=\"5dp\"\r\n                        android:layout_marginBottom=\"5dp\"\r\n                        android:background=\"@drawable/table_border\"\r\n\r\n                        android:clipToOutline=\"true\"\r\n                        android:columnCount=\"2\"\r\n                        tools:ignore=\"TextSizeCheck\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/text_total_laporan\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n\r\n                            android:text=\"@string/total_laporan\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <View\r\n                            android:id=\"@+id/line_total_laporan\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"2dp\"\r\n                            android:background=\"@color/borderColor\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/text_total_laporan\" />\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/total_laporan\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"22dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:includeFontPadding=\"false\"\r\n                            android:text=\"@string/placeholder_num\"\r\n\r\n                            android:textColor=\"@color/white\"\r\n                            android:textSize=\"44sp\"\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@id/line_total_laporan\" />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:text=\"@string/total_laporan\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:textSize=\"18sp\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"@id/total_laporan\"\r\n                            app:layout_constraintTop_toBottomOf=\"@id/total_laporan\" />\r\n\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"139dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"1\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"5dp\"\r\n\r\n                        android:layout_marginTop=\"12dp\"\r\n                        android:layout_marginEnd=\"12dp\"\r\n                        android:layout_marginBottom=\"5dp\"\r\n                        android:background=\"@drawable/table_border\"\r\n\r\n                        android:clipToOutline=\"true\"\r\n                        android:columnCount=\"2\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/text_laporan_baru\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n\r\n                            android:text=\"@string/laporan_baru\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <View\r\n                            android:id=\"@+id/line_laporan_baru\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"2dp\"\r\n                            android:background=\"@color/borderColor\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/text_laporan_baru\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"@string/placeholder_num\"\r\n                            android:textSize=\"44sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:id=\"@+id/laporan_baru\"\r\n                            android:includeFontPadding=\"false\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@id/line_laporan_baru\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:layout_marginStart=\"22dp\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"112dp\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"@string/laporan_belum_diverifikasi\"\r\n                            android:textSize=\"11sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/laporan_baru\"\r\n                            app:layout_constraintStart_toStartOf=\"@id/laporan_baru\"\r\n                            android:layout_marginEnd=\"22dp\"\r\n                            />\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"139dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"1\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"12dp\"\r\n\r\n                        android:layout_marginTop=\"5dp\"\r\n                        android:layout_marginEnd=\"5dp\"\r\n                        android:layout_marginBottom=\"5dp\"\r\n                        android:background=\"@drawable/table_border\"\r\n\r\n                        android:clipToOutline=\"true\"\r\n                        android:columnCount=\"2\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/text_diproses\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n\r\n                            android:text=\"@string/diproses\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <View\r\n                            android:id=\"@+id/line_diproses\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"2dp\"\r\n                            android:background=\"@color/borderColor\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/text_diproses\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"@string/placeholder_num\"\r\n                            android:textSize=\"44sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:id=\"@+id/diproses\"\r\n                            android:includeFontPadding=\"false\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@id/line_diproses\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:layout_marginStart=\"22dp\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"@string/laporan_diproses\"\r\n                            android:textSize=\"14sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/diproses\"\r\n                            app:layout_constraintStart_toStartOf=\"@id/diproses\"\r\n                            />\r\n\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"139dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"1\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"5dp\"\r\n\r\n                        android:layout_marginTop=\"5dp\"\r\n                        android:layout_marginEnd=\"12dp\"\r\n                        android:layout_marginBottom=\"5dp\"\r\n                        android:background=\"@drawable/table_border\"\r\n\r\n                        android:clipToOutline=\"true\"\r\n                        android:columnCount=\"2\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/text_selesai\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n\r\n                            android:text=\"@string/selesai\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <View\r\n                            android:id=\"@+id/line_selesai\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"2dp\"\r\n                            android:background=\"@color/borderColor\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/text_selesai\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"@string/placeholder_num\"\r\n                            android:textSize=\"44sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:id=\"@+id/selesai\"\r\n                            android:includeFontPadding=\"false\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@id/line_selesai\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:layout_marginStart=\"22dp\"\r\n                            />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:text=\"@string/laporan_ditindak\"\r\n                            android:textSize=\"14sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/selesai\"\r\n                            app:layout_constraintStart_toStartOf=\"@id/selesai\"\r\n                            />\r\n\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"139dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"1\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"12dp\"\r\n\r\n                        android:layout_marginTop=\"5dp\"\r\n                        android:layout_marginEnd=\"5dp\"\r\n                        android:layout_marginBottom=\"12dp\"\r\n                        android:background=\"@drawable/table_border\"\r\n\r\n                        android:clipToOutline=\"true\"\r\n                        android:columnCount=\"2\"\r\n                        tools:ignore=\"TextSizeCheck\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/text_ditolak\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n\r\n                            android:text=\"@string/ditolak\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <View\r\n                            android:id=\"@+id/line_ditolak\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"2dp\"\r\n                            android:background=\"@color/borderColor\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/text_ditolak\" />\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/ditolak\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"22dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:includeFontPadding=\"false\"\r\n                            android:text=\"@string/placeholder_num\"\r\n\r\n                            android:textColor=\"@color/white\"\r\n                            android:textSize=\"44sp\"\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toBottomOf=\"@id/line_ditolak\" />\r\n\r\n                        <TextView\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:text=\"@string/laporan_ditolak\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:textSize=\"14sp\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"@id/ditolak\"\r\n                            app:layout_constraintTop_toBottomOf=\"@id/ditolak\" />\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n                    <androidx.constraintlayout.widget.ConstraintLayout\r\n                        android:layout_width=\"0dp\"\r\n                        android:layout_height=\"139dp\"\r\n                        android:layout_rowSpan=\"1\"\r\n                        android:layout_columnSpan=\"1\"\r\n                        android:layout_columnWeight=\"1\"\r\n                        android:layout_marginStart=\"5dp\"\r\n\r\n                        android:layout_marginTop=\"5dp\"\r\n                        android:layout_marginEnd=\"12dp\"\r\n                        android:layout_marginBottom=\"12dp\"\r\n                        android:background=\"@drawable/table_border\"\r\n\r\n                        android:clipToOutline=\"true\"\r\n                        android:columnCount=\"2\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/text_atur_cept\"\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"wrap_content\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"8dp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n\r\n                            android:text=\"@string/atur_cept\"\r\n                            android:textColor=\"@color/white\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n                        <View\r\n                            android:id=\"@+id/line_atur_cept\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"2dp\"\r\n                            android:background=\"@color/borderColor\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/text_atur_cept\"\r\n                            />\r\n\r\n                        <Button\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"32dp\"\r\n                            android:background=\"@drawable/buat_laporan_button\"\r\n                            app:backgroundTint=\"@null\"\r\n                            android:id=\"@+id/buat_laporan_button\"\r\n\r\n                            android:text=\"@string/buat_laporan_baru\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:textSize=\"11sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:includeFontPadding=\"false\"\r\n                            android:gravity=\"center\"\r\n\r\n                            app:layout_constraintTop_toBottomOf=\"@id/line_atur_cept\"\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginTop=\"17dp\"\r\n                            />\r\n                        <Button\r\n                            android:layout_width=\"wrap_content\"\r\n                            android:layout_height=\"32dp\"\r\n                            app:backgroundTint=\"@null\"\r\n                            android:background=\"@drawable/table_border\"\r\n                            android:id=\"@+id/lihat_semua_button\"\r\n\r\n                            android:text=\"@string/lihat_semua\"\r\n                            android:textColor=\"@color/white\"\r\n                            android:textSize=\"11sp\"\r\n                            android:fontFamily=\"@font/poppins_bold\"\r\n                            android:includeFontPadding=\"false\"\r\n                            android:gravity=\"center\"\r\n\r\n                            app:layout_constraintStart_toStartOf=\"parent\"\r\n                            app:layout_constraintBottom_toBottomOf=\"parent\"\r\n                            android:layout_marginStart=\"12dp\"\r\n                            android:layout_marginBottom=\"17dp\"\r\n                            />\r\n\r\n\r\n\r\n                    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n\r\n                </GridLayout>\r\n            </LinearLayout>\r\n        </LinearLayout>\r\n    </ScrollView>\r\n\r\n\r\n    <RelativeLayout\r\n        android:layout_width=\"320dp\"\r\n        android:layout_height=\"match_parent\"\r\n        android:layout_gravity=\"start\"\r\n        android:fitsSystemWindows=\"true\"\r\n        android:background=\"@color/bcolorMain\">\r\n\r\n        <include\r\n            android:id=\"@+id/drawerNavLayout\"\r\n            layout=\"@layout/drawer_nav\" />\r\n\r\n    </RelativeLayout>\r\n\r\n</androidx.drawerlayout.widget.DrawerLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/dashboardscreen.xml b/app/src/main/res/layout/dashboardscreen.xml
+--- a/app/src/main/res/layout/dashboardscreen.xml	(revision c9dba3198192e53b28caa334a66bc7d7160f823f)
++++ b/app/src/main/res/layout/dashboardscreen.xml	(date 1772353779015)
+@@ -493,491 +493,6 @@
+             </LinearLayout>
+         </LinearLayout>
+     </ScrollView>
+-
+-
+-
+-    <ScrollView
+-        android:layout_width="match_parent"
+-        android:layout_height="match_parent">
+-        <LinearLayout
+-            android:layout_width="match_parent"
+-            android:layout_height="wrap_content"
+-            android:orientation="vertical"
+-            android:fitsSystemWindows="true">
+-            <include
+-                android:id="@+id/toolbarLayout"
+-                layout="@layout/toolbar"
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content" />
+-
+-            <LinearLayout
+-                android:layout_width="match_parent"
+-                android:layout_height="wrap_content"
+-                android:background="@color/bcolorMain">
+-
+-                <GridLayout
+-                    android:layout_width="match_parent"
+-                    android:layout_height="wrap_content"
+-                    android:layout_margin="11dp"
+-                    android:background="@drawable/table_border"
+-                    android:clipToOutline="true"
+-                    android:columnCount="2">
+-
+-                    <TextView
+-                        android:layout_width="0dp"
+-                        android:layout_height="match_parent"
+-                        android:layout_rowSpan="1"
+-                        android:layout_columnSpan="2"
+-                        android:layout_columnWeight="1"
+-                        android:layout_marginStart="12dp"
+-                        android:layout_marginTop="5dp"
+-                        android:layout_marginBottom="2dp"
+-                        android:fontFamily="@font/poppins_bold"
+-                        android:text="@string/dashboard"
+-                        android:textColor="@color/white" />
+-
+-                    <View
+-                        android:layout_width="0dp"
+-                        android:layout_height="2dp"
+-                        android:layout_rowSpan="1"
+-                        android:layout_columnSpan="2"
+-                        android:layout_columnWeight="1"
+-                        android:background="@color/borderColor" />
+-
+-                    <androidx.constraintlayout.widget.ConstraintLayout
+-                        android:layout_width="0dp"
+-                        android:layout_height="139dp"
+-                        android:layout_rowSpan="1"
+-                        android:layout_columnSpan="1"
+-                        android:layout_columnWeight="1"
+-                        android:layout_marginStart="12dp"
+-
+-                        android:layout_marginTop="12dp"
+-                        android:layout_marginEnd="5dp"
+-                        android:layout_marginBottom="5dp"
+-                        android:background="@drawable/table_border"
+-
+-                        android:clipToOutline="true"
+-                        android:columnCount="2"
+-                        tools:ignore="TextSizeCheck">
+-
+-                        <TextView
+-                            android:id="@+id/text_total_laporan"
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:layout_marginStart="12dp"
+-                            android:layout_marginTop="8dp"
+-                            android:fontFamily="@font/poppins_bold"
+-
+-                            android:text="@string/total_laporan"
+-                            android:textColor="@color/white"
+-
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintTop_toTopOf="parent" />
+-
+-                        <View
+-                            android:id="@+id/line_total_laporan"
+-                            android:layout_width="match_parent"
+-                            android:layout_height="2dp"
+-                            android:background="@color/borderColor"
+-
+-                            app:layout_constraintTop_toBottomOf="@id/text_total_laporan" />
+-
+-                        <TextView
+-                            android:id="@+id/total_laporan"
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:layout_marginStart="22dp"
+-                            android:layout_marginTop="8dp"
+-                            android:fontFamily="@font/poppins_bold"
+-                            android:includeFontPadding="false"
+-                            android:text="@string/placeholder_num"
+-
+-                            android:textColor="@color/white"
+-                            android:textSize="44sp"
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintTop_toBottomOf="@id/line_total_laporan" />
+-
+-                        <TextView
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:fontFamily="@font/poppins_bold"
+-                            android:text="@string/total_laporan"
+-                            android:textColor="@color/white"
+-                            android:textSize="18sp"
+-
+-                            app:layout_constraintStart_toStartOf="@id/total_laporan"
+-                            app:layout_constraintTop_toBottomOf="@id/total_laporan" />
+-
+-
+-                    </androidx.constraintlayout.widget.ConstraintLayout>
+-
+-                    <androidx.constraintlayout.widget.ConstraintLayout
+-                        android:layout_width="0dp"
+-                        android:layout_height="139dp"
+-                        android:layout_rowSpan="1"
+-                        android:layout_columnSpan="1"
+-                        android:layout_columnWeight="1"
+-                        android:layout_marginStart="5dp"
+-
+-                        android:layout_marginTop="12dp"
+-                        android:layout_marginEnd="12dp"
+-                        android:layout_marginBottom="5dp"
+-                        android:background="@drawable/table_border"
+-
+-                        android:clipToOutline="true"
+-                        android:columnCount="2">
+-
+-                        <TextView
+-                            android:id="@+id/text_laporan_baru"
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:layout_marginStart="12dp"
+-                            android:layout_marginTop="8dp"
+-                            android:fontFamily="@font/poppins_bold"
+-
+-                            android:text="@string/laporan_baru"
+-                            android:textColor="@color/white"
+-
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintTop_toTopOf="parent" />
+-
+-                        <View
+-                            android:id="@+id/line_laporan_baru"
+-                            android:layout_width="match_parent"
+-                            android:layout_height="2dp"
+-                            android:background="@color/borderColor"
+-
+-                            app:layout_constraintTop_toBottomOf="@id/text_laporan_baru"
+-                            />
+-
+-                        <TextView
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:text="@string/placeholder_num"
+-                            android:textSize="44sp"
+-                            android:fontFamily="@font/poppins_bold"
+-                            android:textColor="@color/white"
+-                            android:id="@+id/laporan_baru"
+-                            android:includeFontPadding="false"
+-
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintTop_toBottomOf="@id/line_laporan_baru"
+-                            android:layout_marginTop="8dp"
+-                            android:layout_marginStart="22dp"
+-                            />
+-
+-                        <TextView
+-                            android:layout_width="112dp"
+-                            android:layout_height="wrap_content"
+-                            android:text="@string/laporan_belum_diverifikasi"
+-                            android:textSize="11sp"
+-                            android:fontFamily="@font/poppins_bold"
+-                            android:textColor="@color/white"
+-
+-                            app:layout_constraintTop_toBottomOf="@id/laporan_baru"
+-                            app:layout_constraintStart_toStartOf="@id/laporan_baru"
+-                            android:layout_marginEnd="22dp"
+-                            />
+-
+-                    </androidx.constraintlayout.widget.ConstraintLayout>
+-
+-                    <androidx.constraintlayout.widget.ConstraintLayout
+-                        android:layout_width="0dp"
+-                        android:layout_height="139dp"
+-                        android:layout_rowSpan="1"
+-                        android:layout_columnSpan="1"
+-                        android:layout_columnWeight="1"
+-                        android:layout_marginStart="12dp"
+-
+-                        android:layout_marginTop="5dp"
+-                        android:layout_marginEnd="5dp"
+-                        android:layout_marginBottom="5dp"
+-                        android:background="@drawable/table_border"
+-
+-                        android:clipToOutline="true"
+-                        android:columnCount="2">
+-
+-                        <TextView
+-                            android:id="@+id/text_diproses"
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:layout_marginStart="12dp"
+-                            android:layout_marginTop="8dp"
+-                            android:fontFamily="@font/poppins_bold"
+-
+-                            android:text="@string/diproses"
+-                            android:textColor="@color/white"
+-
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintTop_toTopOf="parent" />
+-
+-                        <View
+-                            android:id="@+id/line_diproses"
+-                            android:layout_width="match_parent"
+-                            android:layout_height="2dp"
+-                            android:background="@color/borderColor"
+-
+-                            app:layout_constraintTop_toBottomOf="@id/text_diproses"
+-                            />
+-
+-                        <TextView
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:text="@string/placeholder_num"
+-                            android:textSize="44sp"
+-                            android:fontFamily="@font/poppins_bold"
+-                            android:textColor="@color/white"
+-                            android:id="@+id/diproses"
+-                            android:includeFontPadding="false"
+-
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintTop_toBottomOf="@id/line_diproses"
+-                            android:layout_marginTop="8dp"
+-                            android:layout_marginStart="22dp"
+-                            />
+-
+-                        <TextView
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:text="@string/laporan_diproses"
+-                            android:textSize="14sp"
+-                            android:fontFamily="@font/poppins_bold"
+-                            android:textColor="@color/white"
+-
+-                            app:layout_constraintTop_toBottomOf="@id/diproses"
+-                            app:layout_constraintStart_toStartOf="@id/diproses"
+-                            />
+-
+-
+-                    </androidx.constraintlayout.widget.ConstraintLayout>
+-
+-                    <androidx.constraintlayout.widget.ConstraintLayout
+-                        android:layout_width="0dp"
+-                        android:layout_height="139dp"
+-                        android:layout_rowSpan="1"
+-                        android:layout_columnSpan="1"
+-                        android:layout_columnWeight="1"
+-                        android:layout_marginStart="5dp"
+-
+-                        android:layout_marginTop="5dp"
+-                        android:layout_marginEnd="12dp"
+-                        android:layout_marginBottom="5dp"
+-                        android:background="@drawable/table_border"
+-
+-                        android:clipToOutline="true"
+-                        android:columnCount="2">
+-
+-                        <TextView
+-                            android:id="@+id/text_selesai"
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:layout_marginStart="12dp"
+-                            android:layout_marginTop="8dp"
+-                            android:fontFamily="@font/poppins_bold"
+-
+-                            android:text="@string/selesai"
+-                            android:textColor="@color/white"
+-
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintTop_toTopOf="parent" />
+-
+-                        <View
+-                            android:id="@+id/line_selesai"
+-                            android:layout_width="match_parent"
+-                            android:layout_height="2dp"
+-                            android:background="@color/borderColor"
+-
+-                            app:layout_constraintTop_toBottomOf="@id/text_selesai"
+-                            />
+-
+-                        <TextView
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:text="@string/placeholder_num"
+-                            android:textSize="44sp"
+-                            android:fontFamily="@font/poppins_bold"
+-                            android:textColor="@color/white"
+-                            android:id="@+id/selesai"
+-                            android:includeFontPadding="false"
+-
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintTop_toBottomOf="@id/line_selesai"
+-                            android:layout_marginTop="8dp"
+-                            android:layout_marginStart="22dp"
+-                            />
+-
+-                        <TextView
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:text="@string/laporan_ditindak"
+-                            android:textSize="14sp"
+-                            android:fontFamily="@font/poppins_bold"
+-                            android:textColor="@color/white"
+-
+-                            app:layout_constraintTop_toBottomOf="@id/selesai"
+-                            app:layout_constraintStart_toStartOf="@id/selesai"
+-                            />
+-
+-
+-                    </androidx.constraintlayout.widget.ConstraintLayout>
+-
+-                    <androidx.constraintlayout.widget.ConstraintLayout
+-                        android:layout_width="0dp"
+-                        android:layout_height="139dp"
+-                        android:layout_rowSpan="1"
+-                        android:layout_columnSpan="1"
+-                        android:layout_columnWeight="1"
+-                        android:layout_marginStart="12dp"
+-
+-                        android:layout_marginTop="5dp"
+-                        android:layout_marginEnd="5dp"
+-                        android:layout_marginBottom="12dp"
+-                        android:background="@drawable/table_border"
+-
+-                        android:clipToOutline="true"
+-                        android:columnCount="2"
+-                        tools:ignore="TextSizeCheck">
+-
+-                        <TextView
+-                            android:id="@+id/text_ditolak"
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:layout_marginStart="12dp"
+-                            android:layout_marginTop="8dp"
+-                            android:fontFamily="@font/poppins_bold"
+-
+-                            android:text="@string/ditolak"
+-                            android:textColor="@color/white"
+-
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintTop_toTopOf="parent" />
+-
+-                        <View
+-                            android:id="@+id/line_ditolak"
+-                            android:layout_width="match_parent"
+-                            android:layout_height="2dp"
+-                            android:background="@color/borderColor"
+-
+-                            app:layout_constraintTop_toBottomOf="@id/text_ditolak" />
+-
+-                        <TextView
+-                            android:id="@+id/ditolak"
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:layout_marginStart="22dp"
+-                            android:layout_marginTop="8dp"
+-                            android:fontFamily="@font/poppins_bold"
+-                            android:includeFontPadding="false"
+-                            android:text="@string/placeholder_num"
+-
+-                            android:textColor="@color/white"
+-                            android:textSize="44sp"
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintTop_toBottomOf="@id/line_ditolak" />
+-
+-                        <TextView
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:fontFamily="@font/poppins_bold"
+-                            android:text="@string/laporan_ditolak"
+-                            android:textColor="@color/white"
+-                            android:textSize="14sp"
+-
+-                            app:layout_constraintStart_toStartOf="@id/ditolak"
+-                            app:layout_constraintTop_toBottomOf="@id/ditolak" />
+-
+-                    </androidx.constraintlayout.widget.ConstraintLayout>
+-
+-                    <androidx.constraintlayout.widget.ConstraintLayout
+-                        android:layout_width="0dp"
+-                        android:layout_height="139dp"
+-                        android:layout_rowSpan="1"
+-                        android:layout_columnSpan="1"
+-                        android:layout_columnWeight="1"
+-                        android:layout_marginStart="5dp"
+-
+-                        android:layout_marginTop="5dp"
+-                        android:layout_marginEnd="12dp"
+-                        android:layout_marginBottom="12dp"
+-                        android:background="@drawable/table_border"
+-
+-                        android:clipToOutline="true"
+-                        android:columnCount="2">
+-
+-                        <TextView
+-                            android:id="@+id/text_atur_cept"
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="wrap_content"
+-                            android:layout_marginStart="12dp"
+-                            android:layout_marginTop="8dp"
+-                            android:fontFamily="@font/poppins_bold"
+-
+-                            android:text="@string/atur_cept"
+-                            android:textColor="@color/white"
+-
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintTop_toTopOf="parent" />
+-
+-                        <View
+-                            android:id="@+id/line_atur_cept"
+-                            android:layout_width="match_parent"
+-                            android:layout_height="2dp"
+-                            android:background="@color/borderColor"
+-
+-                            app:layout_constraintTop_toBottomOf="@id/text_atur_cept"
+-                            />
+-
+-                        <Button
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="32dp"
+-                            android:background="@drawable/buat_laporan_button"
+-                            app:backgroundTint="@null"
+-                            android:id="@+id/buat_laporan_button"
+-
+-                            android:text="@string/buat_laporan_baru"
+-                            android:textColor="@color/white"
+-                            android:textSize="11sp"
+-                            android:fontFamily="@font/poppins_bold"
+-                            android:includeFontPadding="false"
+-                            android:gravity="center"
+-
+-                            app:layout_constraintTop_toBottomOf="@id/line_atur_cept"
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            android:layout_marginStart="12dp"
+-                            android:layout_marginTop="17dp"
+-                            />
+-                        <Button
+-                            android:layout_width="wrap_content"
+-                            android:layout_height="32dp"
+-                            app:backgroundTint="@null"
+-                            android:background="@drawable/table_border"
+-                            android:id="@+id/lihat_semua_button"
+-
+-                            android:text="@string/lihat_semua"
+-                            android:textColor="@color/white"
+-                            android:textSize="11sp"
+-                            android:fontFamily="@font/poppins_bold"
+-                            android:includeFontPadding="false"
+-                            android:gravity="center"
+-
+-                            app:layout_constraintStart_toStartOf="parent"
+-                            app:layout_constraintBottom_toBottomOf="parent"
+-                            android:layout_marginStart="12dp"
+-                            android:layout_marginBottom="17dp"
+-                            />
+-
+-
+-
+-                    </androidx.constraintlayout.widget.ConstraintLayout>
+-
+-
+-                </GridLayout>
+-            </LinearLayout>
+-        </LinearLayout>
+-    </ScrollView>
+-
+-
+     <RelativeLayout
+         android:layout_width="320dp"
+         android:layout_height="match_parent"

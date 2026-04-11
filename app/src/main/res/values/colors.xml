@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="white_email">#80FFFFFF</color>
+    <color name="bcolorMain">#031B39</color>
+    <color name="tableColor">#0F2854</color>
+    <color name="borderColor">#4094A9C4</color>
+    <color name="cyan1">#6898CD</color>
+    <color name="blue_transparent">#52739D</color>
+    <color name="bg_selesai">#00AA52</color>
+    <color name="stroke_status_color">#5094A9C4</color>
+</resources>
