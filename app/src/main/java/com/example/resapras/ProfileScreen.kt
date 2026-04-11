@@ -33,6 +33,7 @@ class ProfileScreen : AppCompatActivity() {
         profileImg = findViewById(R.id.profileImg)
         daftarLaporanNav = findViewById(R.id.daftarlaporanNav)
         dashboardNav = findViewById(R.id.dashboardNav)
+        buatLaporanNav = findViewById(R.id.buatlaporanNav)
 
         drawerMenu.setOnClickListener {
             openDrawer(drawerLayout)
@@ -43,6 +44,10 @@ class ProfileScreen : AppCompatActivity() {
         }
         daftarLaporanNav.setOnClickListener {
             val intent = Intent(this, DaftarLaporan::class.java)
+            startActivity(intent)
+        }
+        buatLaporanNav.setOnClickListener {
+            val intent = Intent(this, BuatlaporanScreen::class.java)
             startActivity(intent)
         }
     }

@@ -28,22 +28,30 @@ class BuatLaporanScreen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        drawerLayout = findViewById(R.id.daftarLaporanScreen);
-        drawerMenu = findViewById(R.id.drawerMenu);
+        drawerLayout = findViewById(R.id.main)
+        drawerMenu = findViewById(R.id.drawerMenu)
         profileImg = findViewById(R.id.profileImg)
-        dashboardNav = findViewById(R.id.dashboardNav)
-        buatLaporanNav = findViewById(R.id.buatlaporanNav)
         daftarLaporanNav = findViewById(R.id.daftarlaporanNav)
+        buatLaporanNav = findViewById(R.id.buatlaporanNav)
+        dashboardNav = findViewById(R.id.dashboardNav)
 
         drawerMenu.setOnClickListener {
             openDrawer(drawerLayout)
+        }
+        dashboardNav.setOnClickListener {
+            val intent = Intent(this, DashboardScreen::class.java)
+            startActivity(intent)
         }
         profileImg.setOnClickListener {
             val intent = Intent(this, ProfileScreen::class.java)
             startActivity(intent)
         }
-        dashboardNav.setOnClickListener {
-            val intent = Intent(this, DashboardScreen::class.java)
+        daftarLaporanNav.setOnClickListener {
+            val intent = Intent(this, DaftarLaporan::class.java)
+            startActivity(intent)
+        }
+        buatLaporanNav.setOnClickListener {
+            val intent = Intent(this, BuatlaporanScreen::class.java)
             startActivity(intent)
         }
     }

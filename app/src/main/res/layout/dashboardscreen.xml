@@ -12,7 +12,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -588,6 +589,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"/>
                             <TextView
+                                android:id="@+id/btn_Detail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="@string/detail"
@@ -600,6 +602,13 @@
                     </LinearLayout>
                 </GridLayout>
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cp_footer"
+                android:textSize="20sp"
+                android:textColor="@color/white_email"
+                android:textAlignment="center"/>
         </LinearLayout>
     </ScrollView>
     <RelativeLayout

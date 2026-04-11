@@ -18,6 +18,7 @@ class DashboardScreen : AppCompatActivity() {
     private lateinit var profileImg : ImageView
     private lateinit var daftarLaporanNav : LinearLayout
     private lateinit var buatLaporanNav : LinearLayout
+    private lateinit var btnDetail : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,8 @@ class DashboardScreen : AppCompatActivity() {
         drawerMenu = findViewById(R.id.drawerMenu)
         profileImg = findViewById(R.id.profileImg)
         daftarLaporanNav = findViewById(R.id.daftarlaporanNav)
+        btnDetail = findViewById(R.id.btn_Detail)
+        buatLaporanNav = findViewById(R.id.buatlaporanNav)
 
         drawerMenu.setOnClickListener {
             openDrawer(drawerLayout)
@@ -44,6 +47,15 @@ class DashboardScreen : AppCompatActivity() {
             val intent = Intent(this, DaftarLaporan::class.java)
             startActivity(intent)
         }
+        btnDetail.setOnClickListener {
+            val intent = Intent(this, DetaillaporanScreen::class.java)
+            startActivity(intent)
+        }
+        buatLaporanNav.setOnClickListener {
+            val intent = Intent(this, BuatlaporanScreen::class.java)
+            startActivity(intent)
+        }
+
     }
     private fun openDrawer(drawerLayout: DrawerLayout){
         drawerLayout.openDrawer(GravityCompat.START)
