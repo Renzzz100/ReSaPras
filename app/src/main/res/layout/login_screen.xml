@@ -8,19 +8,18 @@
     android:id="@+id/loginScreen">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="24dp"
         tools:ignore="MissingConstraints">
-
         <ImageView
             android:id="@+id/logo"
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_gravity="center"
             android:src="@drawable/logo"
-            android:contentDescription="@null"/>
-
+            android:contentDescription="@null"
+            android:layout_marginTop="30dp"/>
         <TextView
             android:id="@+id/rsp"
             android:layout_width="wrap_content"
@@ -31,14 +30,16 @@
             android:textSize="40sp"
             android:textColor="@color/white"
             android:fontFamily="@font/rsp"/>
-
         <TextView
             android:id="@+id/email"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/email"
-            android:textSize="18sp"
-            android:textColor="@color/white"/>
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginTop="40dp"
+            android:drawableEnd="@drawable/baseline_mail_outline_24"
+            android:drawablePadding="10dp"/>
         <EditText
             android:id="@+id/ph_email"
             android:layout_width="match_parent"
@@ -47,17 +48,15 @@
             android:backgroundTint="@color/white"
             android:textColor="@color/white"
             android:textColorHint="@color/white_email"
-            android:textSize="16sp"
-            android:layout_marginBottom="18dp"
+            android:textSize="18sp"
+            android:layout_marginBottom="21dp"
             android:inputType="textEmailAddress"/>
-
-
         <TextView
             android:id="@+id/sandi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sandi"
-            android:textSize="16sp"
+            android:textSize="20sp"
             android:textColor="@color/white"/>
         <EditText
             android:id="@+id/ph_sandi"
@@ -67,10 +66,9 @@
             android:backgroundTint="@color/white"
             android:textColor="@color/white"
             android:textColorHint="@color/white_email"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:layout_marginBottom="18dp"
             android:inputType="textPassword"/>
-
         <Button
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
@@ -83,23 +81,36 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Belum punya akun?"
                 android:textColor="@color/white"
+                android:textSize="18sp"
                 android:layout_weight="1"/>
             <TextView
                 android:id="@+id/signUptext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="Sign Up"
+                android:text="@string/sign_up"
+                android:textSize="20sp"
                 android:layout_weight="24"
                 android:textColor="@color/white"/>
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cp_footer"
+            android:textSize="17sp"
+            android:textColor="@color/white_email"
+            android:textAlignment="center"/>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

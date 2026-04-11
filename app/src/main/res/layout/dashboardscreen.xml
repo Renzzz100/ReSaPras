@@ -7,11 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".DashboardScreen">
+    tools:context=".DashboardScreen"
+    android:background="@color/bcolorMain">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp"
+        android:fillViewport="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,7 +52,7 @@
                         android:textSize="20sp"/>
                     <View
                         android:layout_width="0dp"
-                        android:layout_height="2dp"
+                        android:layout_height="2.5dp"
                         android:layout_rowSpan="1"
                         android:layout_columnSpan="2"
                         android:layout_columnWeight="1"
@@ -83,7 +86,7 @@
                         <View
                             android:id="@+id/line_total_laporan"
                             android:layout_width="match_parent"
-                            android:layout_height="2dp"
+                            android:layout_height="2.5dp"
                             android:background="@color/borderColor"
                             app:layout_constraintTop_toBottomOf="@id/text_total_laporan" />
                         <TextView
@@ -137,7 +140,7 @@
                         <View
                             android:id="@+id/line_laporan_baru"
                             android:layout_width="match_parent"
-                            android:layout_height="2dp"
+                            android:layout_height="2.5dp"
                             android:background="@color/borderColor"
                             app:layout_constraintTop_toBottomOf="@id/text_laporan_baru"/>
                         <TextView
@@ -192,7 +195,7 @@
                         <View
                             android:id="@+id/line_diproses"
                             android:layout_width="match_parent"
-                            android:layout_height="2dp"
+                            android:layout_height="2.5dp"
                             android:background="@color/borderColor"
                             app:layout_constraintTop_toBottomOf="@id/text_diproses"/>
                         <TextView
@@ -246,7 +249,7 @@
                         <View
                             android:id="@+id/line_selesai"
                             android:layout_width="match_parent"
-                            android:layout_height="2dp"
+                            android:layout_height="2.5dp"
                             android:background="@color/borderColor"
                             app:layout_constraintTop_toBottomOf="@id/text_selesai"/>
                         <TextView
@@ -301,7 +304,7 @@
                         <View
                             android:id="@+id/line_ditolak"
                             android:layout_width="match_parent"
-                            android:layout_height="2dp"
+                            android:layout_height="2.5dp"
                             android:background="@color/borderColor"
                             app:layout_constraintTop_toBottomOf="@id/text_ditolak" />
                         <TextView
@@ -355,18 +358,19 @@
                         <View
                             android:id="@+id/line_atur_cept"
                             android:layout_width="match_parent"
-                            android:layout_height="2dp"
+                            android:layout_height="2.5dp"
                             android:background="@color/borderColor"
                             app:layout_constraintTop_toBottomOf="@id/text_atur_cept"/>
                         <Button
+                            android:id="@+id/buat_laporan_button"
                             android:layout_width="wrap_content"
-                            android:layout_height="32dp"
+                            android:layout_height="35dp"
                             android:background="@drawable/buat_laporan_button"
                             app:backgroundTint="@null"
-                            android:id="@+id/buat_laporan_button"
                             android:text="@string/buat_laporan_baru"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="15sp"
+                            android:textAllCaps="false"
                             android:fontFamily="@font/poppins_bold"
                             android:includeFontPadding="false"
                             android:gravity="center"
@@ -375,19 +379,25 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="17dp"/>
                         <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="32dp"
-                            app:backgroundTint="@null"
-                            android:background="@drawable/table_border"
                             android:id="@+id/lihat_semua_button"
+                            android:background="@drawable/table_border"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            app:backgroundTint="@null"
                             android:text="@string/lihat_semua"
                             android:textColor="@color/white"
-                            android:textSize="11sp"
+                            android:textSize="15sp"
+                            android:textAllCaps="false"
                             android:fontFamily="@font/poppins_bold"
                             android:includeFontPadding="false"
                             android:gravity="center"
+
+                            app:layout_constraintTop_toBottomOf="@id/buat_laporan_button"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
+                            android:paddingVertical="0dp"
+                            android:paddingHorizontal="10dp"
+                            android:layout_marginTop="10dp"
                             android:layout_marginStart="12dp"
                             android:layout_marginBottom="17dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -413,16 +423,16 @@
                         android:textColor="@color/white"
                         android:textSize="20sp"
                         android:fontFamily="@font/poppins_bold"/>
-
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="2dp"
+                        android:layout_height="2.5dp"
                         android:background="@color/borderColor"/>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_laporan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:minHeight="200dp"
                         android:clipToPadding="false"
                         android:paddingBottom="8dp"
                         android:nestedScrollingEnabled="false"/>
@@ -431,8 +441,7 @@
 
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
-
+    </androidx.core.widget.NestedScrollView>
     <RelativeLayout
         android:layout_width="320dp"
         android:layout_height="match_parent"

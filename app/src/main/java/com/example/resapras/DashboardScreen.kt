@@ -52,18 +52,49 @@ class DashboardScreen : AppCompatActivity() {
         }
 
         setupRecyclerView()
+        val dummyData = listOf(
+            Laporan(
+                id = 1,
+                kodeLaporan = "LAP001",
+                judul = "Test Laporan 1",
+                prioritas = "Tinggi",
+                status = "Pending",
+                dibuatPada = "2026-04-11"
+            ),
+            Laporan(
+                id = 2,
+                kodeLaporan = "LAP002",
+                judul = "Test Laporan 2",
+                prioritas = "Sedang",
+                status = "Proses",
+                dibuatPada = "2026-04-11"
+            )
+        )
+        adapter.updateData(dummyData)
+        Log.d("DashboardScreen", "Dummy data loaded: ${dummyData.size}")
+
         fetchLaporan()
     }
 
     private fun setupRecyclerView() {
+        // Inisialisasi adapter DULU
         adapter = LaporanAdapter(emptyList()) { laporan ->
-            // val intent = Intent(this, DetailActivity::class.java)
-            // intent.putExtra("id", laporan.id)
-            // startActivity(intent)
+            Log.d("DashboardScreen", "Item clicked: ${laporan.judul}")
+            // Navigasi ke detail
+            //val intent = Intent(this, DetaillaporanScreen::class.java)
+            //intent.putExtra("laporan_id", laporan.id)
+            //startActivity(intent)
         }
+
         val rv = findViewById<RecyclerView>(R.id.rv_laporan)
         rv.layoutManager = LinearLayoutManager(this)
         rv.adapter = adapter
+
+        // PENTING: Set hasFixedSize untuk performa
+        rv.setHasFixedSize(true)
+
+
+        Log.d("DashboardScreen", "RecyclerView setup complete")
     }
 
     private fun fetchLaporan() {
@@ -73,18 +104,26 @@ class DashboardScreen : AppCompatActivity() {
                     apiKey = apiKey,
                     auth = "Bearer $apiKey"
                 )
+
                 Log.d("SUPABASE", "Code: ${response.code()}")
-                Log.d("SUPABASE", "Body: ${response.body()}")
-                Log.d("SUPABASE", "Error: ${response.errorBody()?.string()}")
+
                 if (response.isSuccessful) {
-                    val data = response.body() ?: emptyList()
-                    Log.d("SUPABASE", "Data size: ${data.size}")
+                    val data = response.body()
+                    Log.d("SUPABASE", "Raw Body: ${response.body()?.toString()}")
+                    Log.d("SUPABASE", "Parsed Data: $data")
+                    Log.d("SUPABASE", "Data size: ${data?.size ?: 0}")
+
                     withContext(Dispatchers.Main) {
-                        adapter.updateData(data)
+                        if (!data.isNullOrEmpty()) {
+                            adapter.updateData(data)
+                            Log.d("DashboardScreen", "Adapter updated with ${data.size} items")
+                        } else {
+                            Log.d("DashboardScreen", "Data is null or empty")
+                        }
                     }
                 }
             } catch (e: Exception) {
-                Log.e("SUPABASE", "Exception: ${e.message}")
+                Log.e("SUPABASE", "Exception: ${e.message}", e)
             }
         }
     }

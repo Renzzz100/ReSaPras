@@ -12,6 +12,6 @@ interface SupabaseApi {
         @Header("Authorization") auth: String,
         @Query("select") select: String = "id,kode_laporan,judul,prioritas,status,dibuat_pada",
         @Query("order") order: String = "id.desc",
-        @Query("limit") limit: Int = 10
+        @Query("limit") limit: Int = 5
     ): Response<List<Laporan>>
 }

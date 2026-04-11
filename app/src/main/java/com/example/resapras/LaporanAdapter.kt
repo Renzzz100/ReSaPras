@@ -1,5 +1,6 @@
 package com.example.resapras
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,7 @@ class LaporanAdapter(
         val tvJudul: TextView = view.findViewById(R.id.tv_judul)
         val tvPrioritas: TextView = view.findViewById(R.id.tv_prioritas)
         val tvStatus: TextView = view.findViewById(R.id.tv_status)
-        val tvDetail: TextView = view.findViewById(R.id.tv_detail)
+        val btn_Detail: TextView = view.findViewById(R.id.btn_Detail)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,13 +34,19 @@ class LaporanAdapter(
         holder.tvJudul.text = item.judul
         holder.tvPrioritas.text = item.prioritas
         holder.tvStatus.text = item.status
-        holder.tvDetail.setOnClickListener { onDetailClick(item) }
+        holder.btn_Detail.setOnClickListener { onDetailClick(item) }
     }
 
     override fun getItemCount() = list.size
 
-    fun updateData(newList: List<Laporan>) {
-        list = newList
+    fun updateData(newData: List<Laporan>) {
+        Log.d("LaporanAdapter", "=== UPDATE DATA ===")
+        Log.d("LaporanAdapter", "Old size: ${list.size}")
+        Log.d("LaporanAdapter", "New size: ${newData.size}")
+
+        list = newData
         notifyDataSetChanged()
+
+        Log.d("LaporanAdapter", "Data updated, getItemCount: ${itemCount}")
     }
 }
