@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -47,7 +46,7 @@ class DaftarLaporan : AppCompatActivity() {
             startActivity(intent)
         }
         buatLaporanNav.setOnClickListener {
-            val intent = Intent(this, BuatlaporanScreen::class.java)
+            val intent = Intent(this, BuatLaporanScreen::class.java)
             startActivity(intent)
         }
     }
