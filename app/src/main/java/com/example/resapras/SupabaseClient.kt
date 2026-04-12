@@ -12,7 +12,12 @@ object SupabaseClientProvider {
         supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFtc2p5aWZyYXF6b2xxc3VobmNtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEzOTg0MTcsImV4cCI6MjA4Njk3NDQxN30.be-KPcWxkIRs0qe8QTQI8CQMjPDlz2ITr17nIMmbB94"
     ) {
         install(Postgrest)
-        install(Auth)
+        install(Auth) {
+            // Aktifkan penyimpanan session secara otomatis
+            autoSaveToStorage = true
+            autoLoadFromStorage = true
+            alwaysAutoRefresh = true
+        }
         httpEngine = OkHttp.create {
             config {
                 followRedirects(true)

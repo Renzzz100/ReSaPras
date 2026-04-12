@@ -5,12 +5,16 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.CoroutineScope
@@ -26,15 +30,18 @@ class DashboardScreen : AppCompatActivity() {
     private lateinit var drawerMenu: ImageView
     private lateinit var profileImg: ImageView
     private lateinit var daftarLaporanNav: LinearLayout
+    private lateinit var tvDrawerUsername: TextView
+    private lateinit var tvDrawerEmail: TextView
     private lateinit var adapter: LaporanAdapter
     private lateinit var buatLaporanNav: LinearLayout
     private val apiKey = BuildConfig.SUPABASE_KEY
+
+    private val viewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.dashboardscreen)
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.drawerLayout)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -56,6 +63,13 @@ class DashboardScreen : AppCompatActivity() {
             Log.e("DEBUG", "USER TIDAK LOGIN!")
             // Arahkan ke login screen
         }
+        tvDrawerUsername = findViewById(R.id.username)
+        tvDrawerEmail = findViewById(R.id.email)
+
+        // Isi drawer dengan data dari session yang tersimpan
+        val sessionManager = SessionManager(this)
+        tvDrawerUsername.text = sessionManager.getUsername()
+        tvDrawerEmail.text = sessionManager.getEmail()
 
         drawerMenu.setOnClickListener { openDrawer(drawerLayout) }
 
@@ -66,16 +80,61 @@ class DashboardScreen : AppCompatActivity() {
         profileImg.setOnClickListener {
             startActivity(Intent(this, ProfileScreen::class.java))
         }
-
         daftarLaporanNav.setOnClickListener {
             startActivity(Intent(this, DaftarLaporan::class.java))
         }
 
         setupRecyclerView()
+        val dummyData = listOf(
+            Laporan(
+                id = 1,
+                kodeLaporan = "LAP001",
+                judul = "Test Laporan 1",
+                prioritas = "Tinggi",
+                status = "Pending",
+                dibuatPada = "2026-04-11"
+            ),
+            Laporan(
+                id = 2,
+                kodeLaporan = "LAP002",
+                judul = "Test Laporan 2",
+                prioritas = "Sedang",
+                status = "Proses",
+                dibuatPada = "2026-04-11"
+            )
+        )
+        adapter.updateData(dummyData)
+        Log.d("DashboardScreen", "Dummy data loaded: ${dummyData.size}")
+
         fetchLaporan()
+
+        // Muat profil dari Supabase (update drawer jika ada perubahan)
+        viewModel.loadUserProfile()
+        observeUserProfile()
+    }
+
+    /** Pantau perubahan profil dari ViewModel dan perbarui tampilan drawer */
+    private fun observeUserProfile() {
+        lifecycleScope.launch {
+            launch {
+                viewModel.username.collect { username ->
+                    if (username.isNotEmpty()) {
+                        tvDrawerUsername.text = username
+                    }
+                }
+            }
+            launch {
+                viewModel.userEmail.collect { email ->
+                    if (email.isNotEmpty()) {
+                        tvDrawerEmail.text = email
+                    }
+                }
+            }
+        }
     }
 
     private fun setupRecyclerView() {
+        // Inisialisasi adapter DULU
         adapter = LaporanAdapter(emptyList()) { laporan ->
             Log.d("DashboardScreen", "Item clicked: ${laporan.judul}")
             // Kirim data laporan ke DetailLaporanScreen
@@ -93,7 +152,7 @@ class DashboardScreen : AppCompatActivity() {
     }
 
     private fun fetchLaporan() {
-        CoroutineScope(Dispatchers.IO).launch {
+        lifecycleScope.launch {
             try {
                 val response = RetrofitClient.api.getLaporan(
                     apiKey = apiKey,
@@ -104,15 +163,15 @@ class DashboardScreen : AppCompatActivity() {
 
                 if (response.isSuccessful) {
                     val data = response.body()
+                    Log.d("SUPABASE", "Raw Body: ${response.body()?.toString()}")
+                    Log.d("SUPABASE", "Parsed Data: $data")
                     Log.d("SUPABASE", "Data size: ${data?.size ?: 0}")
 
-                    withContext(Dispatchers.Main) {
-                        if (!data.isNullOrEmpty()) {
-                            adapter.updateData(data)
-                            Log.d("DashboardScreen", "Adapter updated with ${data.size} items")
-                        } else {
-                            Log.d("DashboardScreen", "Data is null or empty")
-                        }
+                    if (!data.isNullOrEmpty()) {
+                        adapter.updateData(data)
+                        Log.d("DashboardScreen", "Adapter updated with ${data.size} items")
+                    } else {
+                        Log.d("DashboardScreen", "Data is null or empty")
                     }
                 }
             } catch (e: Exception) {
