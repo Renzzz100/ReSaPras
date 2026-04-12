@@ -286,7 +286,7 @@
                     app:backgroundTint="@null"
                     android:background="@drawable/table_border"
 
-                    android:text="Pilih File"
+                    android:text="@string/pilih_file"
                     android:textColor="@color/white"
                     android:textSize="14sp"
                     android:fontFamily="@font/poppins_bold"
