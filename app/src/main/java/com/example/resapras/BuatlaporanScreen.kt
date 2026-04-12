@@ -2,8 +2,10 @@ package com.example.resapras
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.Spinner
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -22,7 +24,7 @@ class BuatlaporanScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.buatlaporan_screen)
+        setContentView(R.layout.buat_laporan_screen)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -34,6 +36,7 @@ class BuatlaporanScreen : AppCompatActivity() {
         daftarLaporanNav = findViewById(R.id.daftarlaporanNav)
         buatLaporanNav = findViewById(R.id.buatlaporanNav)
         dashboardNav = findViewById(R.id.dashboardNav)
+
 
         drawerMenu.setOnClickListener {
             openDrawer(drawerLayout)
@@ -54,6 +57,28 @@ class BuatlaporanScreen : AppCompatActivity() {
             val intent = Intent(this, BuatlaporanScreen::class.java)
             startActivity(intent)
         }
+        val kategoriSpinner : Spinner = findViewById(R.id.buat_laporan_input_kategori);
+        val prioritasSpinner : Spinner = findViewById(R.id.buat_laporan_input_prioritas);
+        val kategoriChoices = listOf("Listrik", "AC/Kipas", "Meja/Kursi", "Proyektor", "Pintu/Jendela", "Toilet", "Jaringan/Internet");
+        val prioritasChoices = listOf("Rendah", "Sedang", "Tinggi", "Darurat")
+
+        val kategoriAdapter = ArrayAdapter(
+            this,
+            R.layout.item_spinner_buatlaporan,
+            kategoriChoices
+        )
+
+        kategoriAdapter.setDropDownViewResource(R.layout.item_spinner_buatlaporan)
+        kategoriSpinner.adapter = kategoriAdapter
+
+        val prioritasAdapter = ArrayAdapter(
+            this,
+            R.layout.item_spinner_buatlaporan,
+            prioritasChoices
+        )
+
+        prioritasAdapter.setDropDownViewResource(R.layout.item_spinner_buatlaporan)
+        prioritasSpinner.adapter = prioritasAdapter
     }
     private fun openDrawer(drawerLayout: DrawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);

@@ -38,4 +38,57 @@
     <string name="cp_footer">©ReSarPras by Kelompok 4</string>
     <string name="sign_up"><u>Sign Up</u></string>
     <string name="pilih_file">+ Pilih File</string>
+
+    <string-array name="kategori_array">
+        <item>Laporan Fasilitas</item>
+        <item>Laporan Kebersihan</item>
+        <item>Laporan Keamanan</item>
+    </string-array>
+
+    <string-array name="lokasi_array">
+        <item>R. 101</item>
+        <item>R. 102</item>
+        <item>R. 103</item>
+        <item>R. 104</item>
+        <item>R. 201</item>
+        <item>R. 202</item>
+        <item>R. 203</item>
+        <item>R. 204</item>
+        <item>R. 205</item>
+        <item>R. 206</item>
+        <item>R. 207</item>
+        <item>R. 208</item>
+        <item>R. 201</item>
+        <item>R. 202</item>
+        <item>R. 203</item>
+        <item>R. 204</item>
+        <item>R. 205</item>
+        <item>R. 206</item>
+        <item>R. 207</item>
+        <item>R. 208</item>
+        <item>R. 301</item>
+        <item>R. 302</item>
+        <item>R. 303</item>
+        <item>R. 304</item>
+        <item>R. 305</item>
+        <item>R. 306</item>
+        <item>R. 307</item>
+        <item>R. 308</item>
+        <item>R. 401</item>
+        <item>R. 402</item>
+        <item>R. 403</item>
+        <item>R. 404</item>
+        <item>R. 405</item>
+        <item>R. 406</item>
+        <item>R. 407</item>
+        <item>R. 408</item>
+        <item>Kmr. Mandi L Lt. 1</item>
+        <item>Kmr. Mandi P Lt. 1</item>
+        <item>Kmr. Mandi L Lt. 2</item>
+        <item>Kmr. Mandi P Lt. 2</item>
+        <item>Kmr. Mandi L Lt. 3</item>
+        <item>Kmr. Mandi P Lt. 3</item>
+        <item>Kmr. Mandi L Lt. 4</item>
+        <item>Kmr. Mandi P Lt. 4</item>
+    </string-array>
 </resources>
