@@ -87,7 +87,8 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginBottom="2dp"
                             android:hint="Wanto Ari Wibowo"
-                            android:textColorHint="@color/borderColor"
+                            android:textColorHint="@color/white_email"
+                            android:textColor="@color/white"
                             android:inputType="text"
                             />
 
@@ -125,7 +126,8 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginBottom="2dp"
                             android:hint="--Pilih Kategori--"
-                            android:textColorHint="@color/borderColor"
+                            android:textColorHint="@color/white_email"
+                            android:textColor="@color/white"
                             android:inputType="text"
                             />
 
@@ -163,7 +165,8 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginBottom="2dp"
                             android:hint="Contoh: Kamar mandi gedung baru"
-                            android:textColorHint="@color/borderColor"
+                            android:textColorHint="@color/white_email"
+                            android:textColor="@color/white"
                             android:inputType="text"
                             />
 
@@ -203,7 +206,8 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginEnd="12dp"
                             android:layout_marginBottom="8dp"
-                            android:popupBackground="@color/bcolorMain" />
+                            android:popupBackground="@color/bcolorMain"
+                            android:theme="@style/CustomSpinnerStyle"/>
 
                     </LinearLayout>
 
@@ -240,7 +244,8 @@
                             android:layout_marginBottom="2dp"
                             android:hint="Jelaskan sedetail mungkin"
                             android:inputType="textMultiLine"
-                            android:textColorHint="@color/borderColor" />
+                            android:textColorHint="@color/white_email"
+                            android:textColor="@color/white"/>
 
                     </LinearLayout>
 
