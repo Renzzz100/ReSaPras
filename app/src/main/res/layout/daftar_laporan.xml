@@ -5,10 +5,11 @@
     android:id="@+id/daftarLaporanScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DaftarLaporan">
+    tools:context=".DaftarLaporan"
+    android:background="@color/bcolorMain">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:fitsSystemWindows="true">
         <include
@@ -16,16 +17,67 @@
             layout="@layout/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/bcolorMain">
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Daftar Laporan Screen"
-                android:textColor="@color/white"/>
-        </LinearLayout>
+                android:orientation="vertical"
+                android:layout_margin="11dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/br15">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Daftar Laporan"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="5dp"/>
+                        <View
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                        <TextView
+                            android:id="@+id/buat_laporan_button"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+ Buat Laporan"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginTop="5dp"
+                            android:paddingVertical="5dp"
+                            android:paddingHorizontal="10dp"
+                            android:background="@drawable/buat_laporan_button"/>
+                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2.5dp"
+                        android:background="@color/borderColor"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_all_laporan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="200dp"
+                        android:clipToPadding="false"
+                        android:paddingBottom="8dp"
+                        android:nestedScrollingEnabled="false"/>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
     <RelativeLayout
         android:layout_width="320dp"

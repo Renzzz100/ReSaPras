@@ -9,22 +9,21 @@
     android:fitsSystemWindows="true"
     tools:context=".DashboardScreen"
     android:background="@color/bcolorMain">
-
-    <androidx.core.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingBottom="24dp"
-        android:fillViewport="true">
-        <LinearLayout
+        android:fitsSystemWindows="true">
+        <include
+            android:id="@+id/toolbarLayout"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:fitsSystemWindows="true">
-            <include
-                android:id="@+id/toolbarLayout"
-                layout="@layout/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            android:fillViewport="true">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -364,7 +363,7 @@
                         <Button
                             android:id="@+id/buat_laporan_button"
                             android:layout_width="wrap_content"
-                            android:layout_height="35dp"
+                            android:layout_height="38dp"
                             android:background="@drawable/buat_laporan_button"
                             app:backgroundTint="@null"
                             android:text="@string/buat_laporan_baru"
@@ -436,12 +435,10 @@
                         android:clipToPadding="false"
                         android:paddingBottom="8dp"
                         android:nestedScrollingEnabled="false"/>
-
                 </LinearLayout>
-
             </LinearLayout>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
     <RelativeLayout
         android:layout_width="320dp"
         android:layout_height="match_parent"

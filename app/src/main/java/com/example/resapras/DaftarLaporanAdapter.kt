@@ -7,23 +7,25 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class LaporanAdapter(
+class DaftarLaporanAdapter(
     private var list: List<Laporan>,
     private val onDetailClick: (Laporan) -> Unit
-) : RecyclerView.Adapter<LaporanAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<DaftarLaporanAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        // Sesuaikan dengan ID yang ada di daftar_laporan_list.xml
         val tvKode: TextView = view.findViewById(R.id.tv_kode_laporan)
         val tvDibuat: TextView = view.findViewById(R.id.tv_dibuat_pada)
         val tvJudul: TextView = view.findViewById(R.id.tv_judul)
         val tvPrioritas: TextView = view.findViewById(R.id.tv_prioritas)
         val tvStatus: TextView = view.findViewById(R.id.tv_status)
-        val btn_Detail: TextView = view.findViewById(R.id.btn_Detail)
+        val btnDetail: TextView = view.findViewById(R.id.btn_Detail)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        // INI YANG BERBEDA - menggunakan daftar_laporan_list.xml
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.laporan_list, parent, false)
+            .inflate(R.layout.daftar_laporan_list, parent, false)  // ← beda di sini
         return ViewHolder(view)
     }
 
@@ -35,7 +37,7 @@ class LaporanAdapter(
         holder.tvPrioritas.text = item.prioritas
         holder.tvStatus.text = item.status
 
-        // Set background status berdasarkan nilai
+        // Optional: set background berbeda untuk status
         when (item.status.lowercase()) {
             "selesai" -> {
                 holder.tvStatus.background =
@@ -53,26 +55,16 @@ class LaporanAdapter(
                 holder.tvStatus.background =
                     holder.itemView.context.getDrawable(R.drawable.br18_status_ditolak)
             }
-            else -> {
-                // Default background jika status tidak dikenal
-                holder.tvStatus.background =
-                    holder.itemView.context.getDrawable(R.drawable.br18_status_baru)
-            }
         }
 
-        holder.btn_Detail.setOnClickListener { onDetailClick(item) }
+        holder.btnDetail.setOnClickListener { onDetailClick(item) }
     }
 
     override fun getItemCount() = list.size
 
     fun updateData(newData: List<Laporan>) {
-        Log.d("LaporanAdapter", "=== UPDATE DATA ===")
-        Log.d("LaporanAdapter", "Old size: ${list.size}")
-        Log.d("LaporanAdapter", "New size: ${newData.size}")
-
+        Log.d("DaftarLaporanAdapter", "Update data: ${newData.size} items")
         list = newData
         notifyDataSetChanged()
-
-        Log.d("LaporanAdapter", "Data updated, getItemCount: ${itemCount}")
     }
 }
