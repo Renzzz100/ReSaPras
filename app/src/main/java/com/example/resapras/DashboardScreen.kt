@@ -23,6 +23,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import android.util.Log
 import com.google.gson.Gson
+import io.github.jan.supabase.postgrest.from
+import io.github.jan.supabase.postgrest.query.Order
+import kotlinx.coroutines.withContext
 
 class DashboardScreen : AppCompatActivity() {
 
@@ -54,6 +57,15 @@ class DashboardScreen : AppCompatActivity() {
         daftarLaporanNav = findViewById(R.id.daftarlaporanNav)
         buatLaporanNav = findViewById(R.id.buatlaporanNav)
 
+        val isLoggedIn = AuthRepository().isLoggedIn()
+        Log.d("DEBUG", "Is logged in: $isLoggedIn")
+
+        if (!isLoggedIn) {
+            Log.e("DEBUG", "USER TIDAK LOGIN!")
+            startActivity(Intent(this, LoginScreen::class.java))
+            finish()
+            return
+        }
         val sharedPref = getSharedPreferences("supabase", Context.MODE_PRIVATE)
         val userId = sharedPref.getString("user_id", null)
         Log.d("DEBUG", "User ID from SharedPref: $userId")
@@ -85,27 +97,6 @@ class DashboardScreen : AppCompatActivity() {
         }
 
         setupRecyclerView()
-        val dummyData = listOf(
-            Laporan(
-                id = 1,
-                kodeLaporan = "LAP001",
-                judul = "Test Laporan 1",
-                prioritas = "Tinggi",
-                status = "Pending",
-                dibuatPada = "2026-04-11"
-            ),
-            Laporan(
-                id = 2,
-                kodeLaporan = "LAP002",
-                judul = "Test Laporan 2",
-                prioritas = "Sedang",
-                status = "Proses",
-                dibuatPada = "2026-04-11"
-            )
-        )
-        adapter.updateData(dummyData)
-        Log.d("DashboardScreen", "Dummy data loaded: ${dummyData.size}")
-
         fetchLaporan()
 
         // Muat profil dari Supabase (update drawer jika ada perubahan)
@@ -152,27 +143,26 @@ class DashboardScreen : AppCompatActivity() {
     }
 
     private fun fetchLaporan() {
+        val supabase = SupabaseClientProvider.client
+
         lifecycleScope.launch {
             try {
-                val response = RetrofitClient.api.getLaporan(
-                    apiKey = apiKey,
-                    auth = "Bearer $apiKey"
-                )
+                val data = withContext(Dispatchers.IO) {
+                    supabase.from("laporan")
+                        .select {
+                            order("id", order = Order.DESCENDING)
+                            limit(5)
+                        }
+                        .decodeList<Laporan>()
+                }
 
-                Log.d("SUPABASE", "Code: ${response.code()}")
+                Log.d("SUPABASE", "Data size: ${data.size}")
 
-                if (response.isSuccessful) {
-                    val data = response.body()
-                    Log.d("SUPABASE", "Raw Body: ${response.body()?.toString()}")
-                    Log.d("SUPABASE", "Parsed Data: $data")
-                    Log.d("SUPABASE", "Data size: ${data?.size ?: 0}")
-
-                    if (!data.isNullOrEmpty()) {
-                        adapter.updateData(data)
-                        Log.d("DashboardScreen", "Adapter updated with ${data.size} items")
-                    } else {
-                        Log.d("DashboardScreen", "Data is null or empty")
-                    }
+                if (data.isNotEmpty()) {
+                    adapter.updateData(data)
+                    Log.d("DashboardScreen", "Adapter updated with ${data.size} items")
+                } else {
+                    Log.d("DashboardScreen", "Data kosong")
                 }
             } catch (e: Exception) {
                 Log.e("SUPABASE", "Exception: ${e.message}", e)

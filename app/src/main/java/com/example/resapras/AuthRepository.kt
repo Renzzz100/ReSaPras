@@ -1,6 +1,7 @@
 package com.example.resapras
 
 import android.content.Context
+import io.github.jan.supabase.postgrest.query.Order
 import io.github.jan.supabase.auth.auth
 import io.github.jan.supabase.auth.providers.builtin.Email
 import io.github.jan.supabase.auth.user.UserSession
@@ -185,6 +186,18 @@ class AuthRepository(private val context: Context? = null) {
         // Fallback: cek dari local session
         return sessionManager?.isLoggedIn() == true
     }
+    fun getAccessToken(): String? {
+        return supabase.auth.currentSessionOrNull()?.accessToken
+    }
 
+
+    suspend fun getLaporan(): List<Laporan> {
+        return supabase.from("laporan")
+            .select {
+                order(column = "id", order = Order.DESCENDING)
+                limit(count = 5)
+            }
+            .decodeList<Laporan>()
+    }
     fun getSessionManager(): SessionManager? = sessionManager
 }

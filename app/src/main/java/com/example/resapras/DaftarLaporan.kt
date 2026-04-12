@@ -22,6 +22,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import android.util.Log
 import com.google.gson.Gson
+import io.github.jan.supabase.postgrest.from
 
 class DaftarLaporan : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
@@ -52,13 +53,21 @@ class DaftarLaporan : AppCompatActivity() {
         buatLaporanNav = findViewById(R.id.buatlaporanNav)
         tvDrawerUsername = findViewById(R.id.username)
         tvDrawerEmail = findViewById(R.id.email)
+        rvLaporan = findViewById(R.id.rv_all_laporan)
 
         // Isi drawer dengan data dari session
         val sessionManager = SessionManager(this)
         tvDrawerUsername.text = sessionManager.getUsername()
         tvDrawerEmail.text = sessionManager.getEmail()
-        rvLaporan = findViewById(R.id.rv_all_laporan)
+        val isLoggedIn = AuthRepository().isLoggedIn()
+        Log.d("DEBUG", "Is logged in: $isLoggedIn")
 
+        if (!isLoggedIn) {
+            Log.e("DEBUG", "USER TIDAK LOGIN!")
+            startActivity(Intent(this, LoginScreen::class.java))
+            finish()
+            return
+        }
         // Setup RecyclerView
         setupRecyclerView()
 
@@ -86,57 +95,26 @@ class DaftarLaporan : AppCompatActivity() {
     }
 
     private fun loadAllLaporan() {
-        Toast.makeText(this, "Memuat semua data laporan...", Toast.LENGTH_SHORT).show()
-        Log.d("DaftarLaporan", "Starting to load all laporan")
+        val supabase = SupabaseClientProvider.client
 
-        CoroutineScope(Dispatchers.IO).launch {
+        lifecycleScope.launch {
             try {
-                val response = RetrofitClient.api.getAllLaporan(
-                    apiKey = apiKey,
-                    auth = "Bearer $apiKey"
-                )
+                val data = withContext(Dispatchers.IO) {
+                    supabase.from("laporan")
+                        .select()
+                        .decodeList<Laporan>()
+                }
 
-                Log.d("DaftarLaporan", "Response code: ${response.code()}")
+                Log.d("DaftarLaporan", "Data size: ${data.size}")
 
-                withContext(Dispatchers.Main) {
-                    if (response.isSuccessful) {
-                        val data = response.body()
-                        Log.d("DaftarLaporan", "Data size: ${data?.size ?: 0}")
-
-                        if (!data.isNullOrEmpty()) {
-                            adapter.updateData(data)
-                            Log.d("DaftarLaporan", "Adapter updated with ${data.size} items")
-                            Toast.makeText(
-                                this@DaftarLaporan,
-                                "Berhasil memuat ${data.size} laporan",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        } else {
-                            Log.d("DaftarLaporan", "Data is null or empty")
-                            Toast.makeText(
-                                this@DaftarLaporan,
-                                "Belum ada data laporan",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                    } else {
-                        Log.e("DaftarLaporan", "Error response: ${response.code()} - ${response.message()}")
-                        Toast.makeText(
-                            this@DaftarLaporan,
-                            "Gagal memuat data: ${response.code()}",
-                            Toast.LENGTH_LONG
-                        ).show()
-                    }
+                if (data.isNotEmpty()) {
+                    adapter.updateData(data)
+                } else {
+                    Toast.makeText(this@DaftarLaporan, "Belum ada data laporan", Toast.LENGTH_SHORT).show()
                 }
             } catch (e: Exception) {
                 Log.e("DaftarLaporan", "Exception: ${e.message}", e)
-                withContext(Dispatchers.Main) {
-                    Toast.makeText(
-                        this@DaftarLaporan,
-                        "Error: ${e.message}",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
+                Toast.makeText(this@DaftarLaporan, "Error: ${e.message}", Toast.LENGTH_LONG).show()
             }
         }
     }

@@ -2,6 +2,7 @@ package com.example.resapras
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -43,6 +44,15 @@ class BuatlaporanScreen : AppCompatActivity() {
         tvDrawerUsername = findViewById(R.id.username)
         tvDrawerEmail = findViewById(R.id.email)
 
+        val isLoggedIn = AuthRepository().isLoggedIn()
+        Log.d("DEBUG", "Is logged in: $isLoggedIn")
+
+        if (!isLoggedIn) {
+            Log.e("DEBUG", "USER TIDAK LOGIN!")
+            startActivity(Intent(this, LoginScreen::class.java))
+            finish()
+            return
+        }
         // Isi drawer dengan data dari session
         val sessionManager = SessionManager(this)
         tvDrawerUsername.text = sessionManager.getUsername()
