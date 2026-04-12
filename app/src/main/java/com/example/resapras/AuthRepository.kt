@@ -30,11 +30,10 @@ class AuthRepository(private val context: Context? = null) {
             this.password = password
         }
 
-        // Setelah login berhasil, ambil token dan data profil lalu simpan ke sesi
         val session = supabase.auth.currentSessionOrNull()
         val userEmail = session?.user?.email ?: email
+        val userId = session?.user?.id ?: "" // ambil UUID user
 
-        // Coba ambil data pengguna dari tabel pengguna
         var username = userEmail.substringBefore("@")
         try {
             val result = supabase.from("pengguna")
@@ -43,16 +42,14 @@ class AuthRepository(private val context: Context? = null) {
                 }
                 .decodeSingleOrNull<Map<String, String>>()
             result?.get("username")?.let { username = it }
-        } catch (_: Exception) {
-            // Gunakan fallback dari email jika gagal
-        }
+        } catch (_: Exception) { }
 
-        // Simpan ke session manager
         sessionManager?.saveSession(
-            accessToken = session?.accessToken ?: "",
+            accessToken  = session?.accessToken ?: "",
             refreshToken = session?.refreshToken ?: "",
-            username = username,
-            email = userEmail
+            username     = username,
+            email        = userEmail,
+            userId       = userId // tambah ini
         )
     }
 
@@ -86,10 +83,11 @@ class AuthRepository(private val context: Context? = null) {
         // 4. Simpan session lokal
         val session = supabase.auth.currentSessionOrNull()
         sessionManager?.saveSession(
-            accessToken = session?.accessToken ?: "",
+            accessToken  = session?.accessToken ?: "",
             refreshToken = session?.refreshToken ?: "",
-            username = username,
-            email = email
+            username     = username,
+            email        = email,
+            userId       = session?.user?.id ?: "" // tambah ini
         )
     }
 

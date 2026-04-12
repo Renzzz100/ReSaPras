@@ -13,6 +13,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.gson.Gson
+import coil.load
 
 class DetaillaporanScreen : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
@@ -31,7 +32,7 @@ class DetaillaporanScreen : AppCompatActivity() {
     private lateinit var tvLokasi: TextView
     private lateinit var tvTanggalWaktu: TextView
     private lateinit var tvDeskripsi: TextView
-    private lateinit var ivBukti: ImageView
+    private lateinit var ivBukti: ZoomableImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,33 +89,31 @@ class DetaillaporanScreen : AppCompatActivity() {
         tvJudul.text = laporan.judul
         tvStatus.text = laporan.status
         tvPrioritas.text = laporan.prioritas
+        tvKategori.text = laporan.kategori ?: "-"
+        tvLokasi.text = laporan.lokasi ?: "-"
+        tvDeskripsi.text = laporan.deskripsi ?: "-"
 
-        // Format tanggal
         val formattedDate = laporan.dibuatPada.take(19).replace("T", " ")
         tvTanggalWaktu.text = formattedDate
 
-        // TODO: Set data tambahan yang mungkin belum ada di model Laporan
-        // Jika data kategori, lokasi, deskripsi belum ada di model, Anda perlu:
-        // 1. Update model Laporan dengan field-field tersebut
-        // 2. Atau fetch data lengkap dari API berdasarkan ID
-
-        // Set status color
-        when (laporan.status.lowercase()) {
-            "selesai" -> {
-                tvStatus.setTextColor(getColor(R.color.bg_selesai))
+        // Load bukti image
+        if (!laporan.buktiUrl.isNullOrEmpty()) {
+            ivBukti.visibility = android.view.View.VISIBLE
+            ivBukti.load(laporan.buktiUrl) {
+                crossfade(true)
+                placeholder(R.drawable.bukti_placeholder)
+                error(R.drawable.bukti_placeholder)
             }
-            "diproses" -> {
-                tvStatus.setTextColor(getColor(R.color.bg_diproses))
-            }
-            "baru" -> {
-                tvStatus.setTextColor(getColor(R.color.bg_baru))
-            }
-            "ditolak" -> {
-                tvStatus.setTextColor(getColor(R.color.bg_ditolak))
-            }
+        } else {
+            ivBukti.visibility = android.view.View.GONE
         }
 
-        // TODO: Load image jika ada URL bukti
+        when (laporan.status.lowercase()) {
+            "selesai" -> tvStatus.setTextColor(getColor(R.color.bg_selesai))
+            "diproses" -> tvStatus.setTextColor(getColor(R.color.bg_diproses))
+            "baru" -> tvStatus.setTextColor(getColor(R.color.bg_baru))
+            "ditolak" -> tvStatus.setTextColor(getColor(R.color.bg_ditolak))
+        }
     }
 
     private fun setupClickListeners() {

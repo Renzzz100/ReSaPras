@@ -15,26 +15,27 @@ class SessionManager(context: Context) {
         private const val KEY_USERNAME = "username"
         private const val KEY_EMAIL = "email"
         private const val KEY_IS_LOGGED_IN = "is_logged_in"
+        private const val KEY_USER_ID = "user_id" // tambah ini
     }
 
-    /** Simpan sesi setelah login berhasil */
     fun saveSession(
         accessToken: String,
         refreshToken: String,
         username: String,
-        email: String
+        email: String,
+        userId: String = "" // tambah parameter ini
     ) {
         prefs.edit().apply {
             putString(KEY_ACCESS_TOKEN, accessToken)
             putString(KEY_REFRESH_TOKEN, refreshToken)
             putString(KEY_USERNAME, username)
             putString(KEY_EMAIL, email)
+            putString(KEY_USER_ID, userId) // simpan UUID
             putBoolean(KEY_IS_LOGGED_IN, true)
             apply()
         }
     }
 
-    /** Update hanya data profil (username & email) tanpa mengubah token */
     fun updateUserInfo(username: String, email: String) {
         prefs.edit().apply {
             putString(KEY_USERNAME, username)
@@ -43,23 +44,14 @@ class SessionManager(context: Context) {
         }
     }
 
-    /** Hapus semua data sesi saat logout */
     fun clearSession() {
         prefs.edit().clear().apply()
     }
 
-    /** Cek apakah pengguna sudah login */
     fun isLoggedIn(): Boolean = prefs.getBoolean(KEY_IS_LOGGED_IN, false)
-
-    /** Ambil access token yang tersimpan */
     fun getAccessToken(): String? = prefs.getString(KEY_ACCESS_TOKEN, null)
-
-    /** Ambil refresh token yang tersimpan */
     fun getRefreshToken(): String? = prefs.getString(KEY_REFRESH_TOKEN, null)
-
-    /** Ambil username pengguna */
     fun getUsername(): String = prefs.getString(KEY_USERNAME, "Pengguna") ?: "Pengguna"
-
-    /** Ambil email pengguna */
     fun getEmail(): String = prefs.getString(KEY_EMAIL, "") ?: ""
+    fun getUserId(): String? = prefs.getString(KEY_USER_ID, null) // perbaikan di sini
 }

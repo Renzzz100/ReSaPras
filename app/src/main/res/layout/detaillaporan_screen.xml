@@ -231,12 +231,12 @@
                             android:textSize="20sp"
                             android:fontFamily="@font/poppins_regular"
                             android:textColor="@color/white"/>
-                        <ImageView
+                        <com.example.resapras.ZoomableImageView
                             android:id="@+id/bukti_image"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="250dp"
-                            android:contentDescription="bukti_image"
-                            android:src="@drawable/bukti_placeholder"/>
+                            android:visibility="gone"
+                            android:contentDescription="bukti_image"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
