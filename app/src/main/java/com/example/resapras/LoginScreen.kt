@@ -25,7 +25,9 @@ class LoginScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_screen)
 
-        if (AuthRepository().isLoggedIn()) {
+        // Cek session — jika sudah login, langsung ke Dashboard
+        val sessionManager = SessionManager(this)
+        if (sessionManager.isLoggedIn()) {
             navigateToDashboard()
             return
         }

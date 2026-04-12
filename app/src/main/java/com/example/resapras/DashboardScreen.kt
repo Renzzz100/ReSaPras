@@ -4,18 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import android.util.Log
 import com.example.resapras.BuildConfig
 
@@ -25,8 +26,12 @@ class DashboardScreen : AppCompatActivity() {
     private lateinit var drawerMenu: ImageView
     private lateinit var profileImg: ImageView
     private lateinit var daftarLaporanNav: LinearLayout
+    private lateinit var tvDrawerUsername: TextView
+    private lateinit var tvDrawerEmail: TextView
     private lateinit var adapter: LaporanAdapter
     private val apiKey = BuildConfig.SUPABASE_KEY
+
+    private val viewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +47,13 @@ class DashboardScreen : AppCompatActivity() {
         drawerMenu = findViewById(R.id.drawerMenu)
         profileImg = findViewById(R.id.profileImg)
         daftarLaporanNav = findViewById(R.id.daftarlaporanNav)
+        tvDrawerUsername = findViewById(R.id.username)
+        tvDrawerEmail = findViewById(R.id.email)
+
+        // Isi drawer dengan data dari session yang tersimpan
+        val sessionManager = SessionManager(this)
+        tvDrawerUsername.text = sessionManager.getUsername()
+        tvDrawerEmail.text = sessionManager.getEmail()
 
         drawerMenu.setOnClickListener { openDrawer(drawerLayout) }
         profileImg.setOnClickListener {
@@ -74,6 +86,30 @@ class DashboardScreen : AppCompatActivity() {
         Log.d("DashboardScreen", "Dummy data loaded: ${dummyData.size}")
 
         fetchLaporan()
+
+        // Muat profil dari Supabase (update drawer jika ada perubahan)
+        viewModel.loadUserProfile()
+        observeUserProfile()
+    }
+
+    /** Pantau perubahan profil dari ViewModel dan perbarui tampilan drawer */
+    private fun observeUserProfile() {
+        lifecycleScope.launch {
+            launch {
+                viewModel.username.collect { username ->
+                    if (username.isNotEmpty()) {
+                        tvDrawerUsername.text = username
+                    }
+                }
+            }
+            launch {
+                viewModel.userEmail.collect { email ->
+                    if (email.isNotEmpty()) {
+                        tvDrawerEmail.text = email
+                    }
+                }
+            }
+        }
     }
 
     private fun setupRecyclerView() {
@@ -93,12 +129,11 @@ class DashboardScreen : AppCompatActivity() {
         // PENTING: Set hasFixedSize untuk performa
         rv.setHasFixedSize(true)
 
-
         Log.d("DashboardScreen", "RecyclerView setup complete")
     }
 
     private fun fetchLaporan() {
-        CoroutineScope(Dispatchers.IO).launch {
+        lifecycleScope.launch {
             try {
                 val response = RetrofitClient.api.getLaporan(
                     apiKey = apiKey,
@@ -113,13 +148,11 @@ class DashboardScreen : AppCompatActivity() {
                     Log.d("SUPABASE", "Parsed Data: $data")
                     Log.d("SUPABASE", "Data size: ${data?.size ?: 0}")
 
-                    withContext(Dispatchers.Main) {
-                        if (!data.isNullOrEmpty()) {
-                            adapter.updateData(data)
-                            Log.d("DashboardScreen", "Adapter updated with ${data.size} items")
-                        } else {
-                            Log.d("DashboardScreen", "Data is null or empty")
-                        }
+                    if (!data.isNullOrEmpty()) {
+                        adapter.updateData(data)
+                        Log.d("DashboardScreen", "Adapter updated with ${data.size} items")
+                    } else {
+                        Log.d("DashboardScreen", "Data is null or empty")
                     }
                 }
             } catch (e: Exception) {

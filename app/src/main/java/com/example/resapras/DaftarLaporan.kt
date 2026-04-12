@@ -6,11 +6,14 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 
 class DaftarLaporan : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
@@ -19,6 +22,8 @@ class DaftarLaporan : AppCompatActivity() {
     private lateinit var dashboardNav : LinearLayout
     private lateinit var daftarLaporanNav : LinearLayout
     private lateinit var buatLaporanNav : LinearLayout
+    private lateinit var tvDrawerUsername: TextView
+    private lateinit var tvDrawerEmail: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +34,18 @@ class DaftarLaporan : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        drawerLayout = findViewById(R.id.daftarLaporanScreen);
-        drawerMenu = findViewById(R.id.drawerMenu);
+        drawerLayout = findViewById(R.id.daftarLaporanScreen)
+        drawerMenu = findViewById(R.id.drawerMenu)
         profileImg = findViewById(R.id.profileImg)
         dashboardNav = findViewById(R.id.dashboardNav)
         buatLaporanNav = findViewById(R.id.buatlaporanNav)
+        tvDrawerUsername = findViewById(R.id.username)
+        tvDrawerEmail = findViewById(R.id.email)
+
+        // Isi drawer dengan data dari session
+        val sessionManager = SessionManager(this)
+        tvDrawerUsername.text = sessionManager.getUsername()
+        tvDrawerEmail.text = sessionManager.getEmail()
 
         drawerMenu.setOnClickListener {
             openDrawer(drawerLayout)
@@ -52,6 +64,6 @@ class DaftarLaporan : AppCompatActivity() {
         }
     }
     private fun openDrawer(drawerLayout: DrawerLayout){
-        drawerLayout.openDrawer(GravityCompat.START);
+        drawerLayout.openDrawer(GravityCompat.START)
     }
 }

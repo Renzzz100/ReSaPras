@@ -37,10 +37,11 @@
                     android:src="@drawable/no_user" />
 
                 <TextView
+                    android:id="@+id/tv_profile_nama_atas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="John Doe"
+                    android:text="-"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="20sp" />
@@ -92,10 +93,11 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/tv_profile_nama"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="John Doe"
+                        android:text="-"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -116,10 +118,11 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/tv_profile_email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="JohnDoe@example.com"
+                        android:text="-"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -140,10 +143,11 @@
                         android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/tv_profile_notelp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="+0812345678"
+                        android:text="-"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -288,6 +292,7 @@
                     android:paddingHorizontal="16dp"
                     android:paddingTop="10dp">
                     <TextView
+                        android:id="@+id/btn_ganti_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/br15_bg_profile"
@@ -298,6 +303,7 @@
                         android:textColor="@color/white"
                         android:textSize="18sp"/>
                     <TextView
+                        android:id="@+id/btn_keluar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="10dp"

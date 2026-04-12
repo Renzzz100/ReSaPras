@@ -8,6 +8,10 @@ import android.view.WindowManager
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SplashActivity : AppCompatActivity() {
 
@@ -30,16 +34,29 @@ class SplashActivity : AppCompatActivity() {
         val fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in)
         logo.startAnimation(fadeIn)
 
-        // Delay 2 detik lalu pindah ke LoginScreen
+        val sessionManager = SessionManager(this)
+        val repository = AuthRepository(this)
+
+        // Restore Supabase session di background, lalu navigasi setelah splash selesai
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, LoginScreen::class.java)
-            startActivity(intent)
+            if (sessionManager.isLoggedIn()) {
+                // Restore session Supabase agar query DB bisa berjalan tanpa login ulang
+                CoroutineScope(Dispatchers.IO).launch {
+                    repository.restoreSession()
+                    withContext(Dispatchers.Main) {
+                        navigateTo(DashboardScreen::class.java)
+                    }
+                }
+            } else {
+                navigateTo(LoginScreen::class.java)
+            }
+        }, 2000)
+    }
 
-            // Animasi transisi
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-
-            // Tutup SplashActivity
-            finish()
-        }, 2000) // 2000 ms = 2 detik
+    private fun navigateTo(destination: Class<*>) {
+        val intent = Intent(this, destination)
+        startActivity(intent)
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
+        finish()
     }
 }
