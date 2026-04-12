@@ -16,7 +16,8 @@ data class Pengguna(
     val nama: String,
     val username: String,
     val email: String,
-    val no_hp: String? = null
+    val no_hp: String? = null,
+    val role: String? = null
 )
 
 class AuthRepository(private val context: Context? = null) {
@@ -32,65 +33,60 @@ class AuthRepository(private val context: Context? = null) {
 
         val session = supabase.auth.currentSessionOrNull()
         val userEmail = session?.user?.email ?: email
-        val userId = session?.user?.id ?: "" // ambil UUID user
+        val userId = session?.user?.id ?: ""
 
         var username = userEmail.substringBefore("@")
+        var userRole = "siswa"
+
         try {
+            // Query dengan kolom "peran"
             val result = supabase.from("pengguna")
-                .select(columns = Columns.list("username")) {
+                .select(columns = Columns.list("username", "peran")) {
                     filter { eq("email", userEmail) }
                 }
                 .decodeSingleOrNull<Map<String, String>>()
+
             result?.get("username")?.let { username = it }
-        } catch (_: Exception) { }
+            result?.get("peran")?.let { userRole = it }
+
+            android.util.Log.d("AuthRepo", "Login - Role fetched: $userRole")
+        } catch (e: Exception) {
+            android.util.Log.e("AuthRepo", "Error fetching user data: ${e.message}")
+        }
 
         sessionManager?.saveSession(
             accessToken  = session?.accessToken ?: "",
             refreshToken = session?.refreshToken ?: "",
             username     = username,
             email        = userEmail,
-            userId       = userId // tambah ini
+            userId       = userId
         )
+
+        sessionManager?.saveRole(userRole)
+        android.util.Log.d("AuthRepo", "Role saved: $userRole")
     }
-
     suspend fun register(email: String, password: String, nama: String, noHp: String) {
-        // 1. Sign up + simpan nama & noHp ke user_metadata
-        supabase.auth.signUpWith(Email) {
-            this.email = email
-            this.password = password
-            data = buildJsonObject {
-                put("display_name", nama)
-                put("phone", noHp)        // ← pakai key custom, bukan "phone"
-            }
-        }
+        // ... kode sign up ...
 
-        // 2. Login agar session aktif
-        supabase.auth.signInWith(Email) {
-            this.email = email
-            this.password = password
-        }
-
-        // 3. Insert ke tabel pengguna (session sudah aktif)
         val username = email.substringBefore("@")
         try {
+            // Insert dengan kolom "peran"
             supabase.from("pengguna").insert(
-                Pengguna(nama = nama, username = username, email = email, no_hp = noHp)
+                mapOf(
+                    "nama" to nama,
+                    "username" to username,
+                    "email" to email,
+                    "no_hp" to noHp,
+                    "peran" to "siswa"  // Gunakan "peran" bukan "role"
+                )
             )
         } catch (e: Exception) {
             android.util.Log.e("RepoDebug", "Insert pengguna gagal: ${e.message}", e)
         }
 
-        // 4. Simpan session lokal
-        val session = supabase.auth.currentSessionOrNull()
-        sessionManager?.saveSession(
-            accessToken  = session?.accessToken ?: "",
-            refreshToken = session?.refreshToken ?: "",
-            username     = username,
-            email        = email,
-            userId       = session?.user?.id ?: "" // tambah ini
-        )
+        // ... kode session ...
+        sessionManager?.saveRole("siswa")
     }
-
     suspend fun logout() {
         supabase.auth.signOut()
         sessionManager?.clearSession()

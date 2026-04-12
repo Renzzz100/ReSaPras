@@ -16,6 +16,7 @@ class SessionManager(context: Context) {
         private const val KEY_EMAIL = "email"
         private const val KEY_IS_LOGGED_IN = "is_logged_in"
         private const val KEY_USER_ID = "user_id" // tambah ini
+        private const val KEY_ROLE = "role"
     }
 
     fun saveSession(
@@ -23,14 +24,16 @@ class SessionManager(context: Context) {
         refreshToken: String,
         username: String,
         email: String,
-        userId: String = "" // tambah parameter ini
+        userId: String = "",
+        role: String = "siswa" // Tambahkan parameter role
     ) {
         prefs.edit().apply {
             putString(KEY_ACCESS_TOKEN, accessToken)
             putString(KEY_REFRESH_TOKEN, refreshToken)
             putString(KEY_USERNAME, username)
             putString(KEY_EMAIL, email)
-            putString(KEY_USER_ID, userId) // simpan UUID
+            putString(KEY_USER_ID, userId)
+            putString(KEY_ROLE, role) // Simpan role
             putBoolean(KEY_IS_LOGGED_IN, true)
             apply()
         }
@@ -54,4 +57,6 @@ class SessionManager(context: Context) {
     fun getUsername(): String = prefs.getString(KEY_USERNAME, "Pengguna") ?: "Pengguna"
     fun getEmail(): String = prefs.getString(KEY_EMAIL, "") ?: ""
     fun getUserId(): String? = prefs.getString(KEY_USER_ID, null) // perbaikan di sini
+    fun getRole(): String = prefs.getString(KEY_ROLE, "siswa") ?: "siswa"
+    fun saveRole(role: String) { prefs.edit().putString(KEY_ROLE, role).apply() }
 }

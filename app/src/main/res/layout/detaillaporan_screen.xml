@@ -44,6 +44,10 @@
                             android:fontFamily="@font/poppins_bold"
                             android:textSize="20sp"
                             android:layout_marginStart="12dp"/>
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"/>
                         <TextView
                             android:id="@+id/kode_laporan"
                             android:layout_width="wrap_content"
@@ -52,7 +56,7 @@
                             android:textColor="@color/white_email"
                             android:fontFamily="@font/poppins_bold"
                             android:textSize="20sp"
-                            android:layout_marginStart="30dp"/>
+                            android:layout_marginEnd="10dp"/>
                     </LinearLayout>
                     <View
                         android:layout_width="match_parent"
@@ -237,6 +241,58 @@
                             android:layout_height="250dp"
                             android:visibility="gone"
                             android:contentDescription="bukti_image"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/layout_admin_actions"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="16dp"
+                        android:paddingBottom="15dp"
+                        android:visibility="gone">
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2.5dp"
+                            android:layout_marginBottom="12dp"
+                            android:background="@color/borderColor"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aksi Admin"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="@color/white"
+                            android:layout_marginBottom="10dp"/>
+
+                        <!-- Update Status -->
+                        <TextView
+                            android:id="@+id/btn_update_status"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Update Status"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="center"
+                            android:paddingVertical="10dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/br18_status_diproses"/>
+
+                        <!-- Tolak Laporan -->
+                        <TextView
+                            android:id="@+id/btn_tolak_laporan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tolak Laporan"
+                            android:textColor="@color/white"
+                            android:textSize="15sp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="center"
+                            android:paddingVertical="10dp"
+                            android:background="@drawable/br18_status_ditolak"/>
+
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

@@ -35,7 +35,7 @@ class BuatlaporanScreen : AppCompatActivity() {
     private lateinit var inputJudul: EditText
     private lateinit var inputKategori: EditText
     private lateinit var inputLokasi: EditText
-    private lateinit var spinnerPrioritas: Spinner   // DIGANTI: Spinner
+    private lateinit var spinnerPrioritas: Spinner
     private lateinit var inputDeskripsi: EditText
     private lateinit var btnPickMedia: Button
     private lateinit var ivPreview: ImageView
@@ -45,7 +45,7 @@ class BuatlaporanScreen : AppCompatActivity() {
     // File yang dipilih user
     private var selectedFileUri: Uri? = null
 
-    // Nilai enum yang sesuai dengan database (case-sensitive!)
+    // Nilai enum yang sesuai dengan database
     private val prioritasOptions = listOf("--Pilih Prioritas--", "rendah", "sedang", "tinggi", "darurat")
 
     private val pickMedia = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
@@ -76,10 +76,9 @@ class BuatlaporanScreen : AppCompatActivity() {
         bindViews()
         setupSpinnerPrioritas()
 
+        // Ambil data dari session dan tampilkan di drawer
         val sessionManager = SessionManager(this)
-        tvDrawerUsername.text = sessionManager.getUsername()
-        tvDrawerEmail.text = sessionManager.getEmail()
-
+        setupDrawerProfile(sessionManager)
         setupNavigasi(sessionManager)
 
         btnPickMedia.setOnClickListener {
@@ -96,18 +95,34 @@ class BuatlaporanScreen : AppCompatActivity() {
         profileImg       = findViewById(R.id.profileImg)
         daftarLaporanNav = findViewById(R.id.daftarlaporanNav)
         dashboardNav     = findViewById(R.id.dashboardNav)
-        tvDrawerUsername = findViewById(R.id.username)
-        tvDrawerEmail    = findViewById(R.id.email)
 
+        // Form views
         inputJudul       = findViewById(R.id.buat_laporan_input_judul)
         inputKategori    = findViewById(R.id.buat_laporan_input_kategori)
         inputLokasi      = findViewById(R.id.buat_laporan_input_lokasi)
-        spinnerPrioritas = findViewById(R.id.buat_laporan_input_prioritas)  // DIGANTI
+        spinnerPrioritas = findViewById(R.id.buat_laporan_input_prioritas)
         inputDeskripsi   = findViewById(R.id.buat_laporan_input_deskripsi)
         btnPickMedia     = findViewById(R.id.btnPickMedia)
         ivPreview        = findViewById(R.id.ivPreview)
         btnSubmit        = findViewById(R.id.buat_laporan_button)
         btnBatal         = findViewById(R.id.buat_laporan_batal_button)
+    }
+
+    private fun setupDrawerProfile(sessionManager: SessionManager) {
+        // Cari view dari drawer navigation
+        val drawerView = findViewById<View>(R.id.drawerNavLayout) ?: run {
+            // Jika tidak ada ID drawerNavLayout, cari langsung dari drawerLayout
+            tvDrawerUsername = drawerLayout.findViewById(R.id.username)
+            tvDrawerEmail = drawerLayout.findViewById(R.id.email)
+            return
+        }
+
+        tvDrawerUsername = drawerView.findViewById(R.id.username)
+        tvDrawerEmail = drawerView.findViewById(R.id.email)
+
+        // Set data dari session
+        tvDrawerUsername.text = sessionManager.getUsername()
+        tvDrawerEmail.text = sessionManager.getEmail()
     }
 
     private fun setupSpinnerPrioritas() {
@@ -159,7 +174,7 @@ class BuatlaporanScreen : AppCompatActivity() {
         val judul     = inputJudul.text.toString().trim()
         val kategori  = inputKategori.text.toString().trim()
         val lokasi    = inputLokasi.text.toString().trim()
-        val prioritas = spinnerPrioritas.selectedItem.toString()  // DIGANTI: ambil dari Spinner
+        val prioritas = spinnerPrioritas.selectedItem.toString()
         val deskripsi = inputDeskripsi.text.toString().trim()
 
         // Validasi
@@ -186,7 +201,7 @@ class BuatlaporanScreen : AppCompatActivity() {
                     kategori      = kategori,
                     lokasi        = lokasi,
                     deskripsi     = deskripsi,
-                    prioritas     = prioritas,  // nilai dari Spinner, sudah sesuai enum DB
+                    prioritas     = prioritas,
                     status        = "baru",
                     buktiUrl      = buktiUrl,
                     pelaporIdUuid = sessionManager.getUserId()
@@ -219,7 +234,7 @@ class BuatlaporanScreen : AppCompatActivity() {
     }
 
     private fun generateKodeLaporan(): String {
-        val sdf = SimpleDateFormat("yyyyMMdd", Locale.getDefault())
+        val sdf = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault())
         return "RPT-${sdf.format(Date())}"
     }
 }

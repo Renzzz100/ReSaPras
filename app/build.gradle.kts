@@ -15,7 +15,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.resapras"
-        minSdk = 24
+        minSdk = 25
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -48,11 +48,13 @@ android {
 
 dependencies {
     implementation("androidx.core:core-splashscreen:1.2.0-alpha01")
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.compose.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -68,4 +70,5 @@ dependencies {
     implementation("io.ktor:ktor-client-core:3.0.3")
     implementation("io.coil-kt:coil:2.7.0")
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.0")
 }

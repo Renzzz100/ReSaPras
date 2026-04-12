@@ -7,78 +7,149 @@
     android:layout_height="match_parent"
     tools:context=".DaftarLaporan"
     android:background="@color/bcolorMain">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:fitsSystemWindows="true">
+
         <include
             android:id="@+id/toolbarLayout"
             layout="@layout/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <androidx.core.widget.NestedScrollView
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fillViewport="true">
+            android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="11dp">
-                <LinearLayout
+                android:orientation="vertical">
+                <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/br15">
+                    android:fillViewport="true">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="5dp">
-                        <TextView
-                            android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_margin="11dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Daftar Laporan"
-                            android:textColor="@color/white"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/poppins_bold"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginTop="5dp"/>
-                        <View
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"/>
-                        <TextView
-                            android:id="@+id/buat_laporan_button"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="+ Buat Laporan"
-                            android:textColor="@color/white"
-                            android:textSize="15sp"
-                            android:fontFamily="@font/poppins_regular"
-                            android:layout_marginEnd="12dp"
-                            android:layout_marginTop="5dp"
-                            android:paddingVertical="5dp"
-                            android:paddingHorizontal="10dp"
-                            android:background="@drawable/buat_laporan_button"/>
+                            android:orientation="vertical"
+                            android:background="@drawable/br15">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="5dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Daftar Laporan"
+                                    android:textColor="@color/white"
+                                    android:textSize="20sp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:layout_marginStart="12dp"
+                                    android:layout_marginTop="5dp"/>
+
+                                <View
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"/>
+
+                                <TextView
+                                    android:id="@+id/buat_laporan_button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="+ Buat Laporan"
+                                    android:textColor="@color/white"
+                                    android:textSize="15sp"
+                                    android:fontFamily="@font/poppins_regular"
+                                    android:layout_marginEnd="12dp"
+                                    android:layout_marginTop="5dp"
+                                    android:paddingVertical="5dp"
+                                    android:paddingHorizontal="10dp"
+                                    android:background="@drawable/buat_laporan_button"/>
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/borderheader"
+                                android:layout_width="match_parent"
+                                android:layout_height="2.5dp"
+                                android:background="@color/borderColor"/>
+                            <LinearLayout
+                                android:id="@+id/empty_state_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:paddingVertical="40dp"
+                                android:visibility="gone">
+
+                                <ImageView
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:src="@drawable/twotone_attach_file_24"
+                                    android:alpha="0.7"
+                                    app:tint="@color/white_email"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Belum ada laporan"
+                                    android:textColor="@color/white_email"
+                                    android:textSize="24sp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:layout_marginTop="16dp"/>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Buat laporan pertama Anda sekarang"
+                                    android:textColor="@color/white_email"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/poppins_regular"
+                                    android:layout_marginTop="4dp"
+                                    android:alpha="0.7"/>
+
+                                <Button
+                                    android:id="@+id/btn_empty_buat_laporan"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="+ Buat Laporan"
+                                    android:textColor="@color/white"
+                                    android:textSize="14sp"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:background="@drawable/buat_laporan_button"
+                                    app:backgroundTint="@null"
+                                    android:layout_marginTop="20dp"
+                                    android:paddingHorizontal="24dp"
+                                    android:paddingVertical="8dp"
+                                    android:textAllCaps="false"/>
+
+                            </LinearLayout>
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv_all_laporan"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clipToPadding="false"
+                                android:paddingBottom="8dp"
+                                android:nestedScrollingEnabled="false"/>
+                        </LinearLayout>
                     </LinearLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="2.5dp"
-                        android:background="@color/borderColor"/>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_all_laporan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:minHeight="200dp"
-                        android:clipToPadding="false"
-                        android:paddingBottom="8dp"
-                        android:nestedScrollingEnabled="false"/>
-                </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
             </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="320dp"
         android:layout_height="match_parent"
@@ -88,4 +159,5 @@
         <include
             layout="@layout/drawer_nav" />
     </RelativeLayout>
+
 </androidx.drawerlayout.widget.DrawerLayout>

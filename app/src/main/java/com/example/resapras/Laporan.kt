@@ -15,5 +15,6 @@ data class Laporan(
     @SerialName("lokasi") val lokasi: String? = null,
     @SerialName("deskripsi") val deskripsi: String? = null,
     @SerialName("bukti_url") val buktiUrl: String? = null,
-    @SerialName("pelapor_id_uuid") val pelaporIdUuid: String? = null
+    @SerialName("pelapor_id_uuid") val pelaporIdUuid: String? = null,
+    @SerialName("dihapus_pada") val dihapusPada: String? = null
 )
