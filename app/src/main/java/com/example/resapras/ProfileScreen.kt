@@ -106,6 +106,10 @@ class ProfileScreen : AppCompatActivity() {
         btnKeluar.setOnClickListener {
             showLogoutDialog()
         }
+        buatLaporanNav.setOnClickListener {
+            val intent = Intent(this, BuatlaporanScreen::class.java)
+            startActivity(intent)
+        }
     }
 
     /** Muat data profil dari Supabase via ViewModel */

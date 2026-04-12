@@ -7,6 +7,8 @@
     <color name="tableColor">#0F2854</color>
     <color name="borderColor">#4094A9C4</color>
     <color name="cyan1">#6898CD</color>
+    <color name="red1">#DA1D00</color>
+    <color name="red2">#b01a04</color>
     <color name="blue_transparent">#52739D</color>
     <color name="bg_selesai">#00AA52</color>
     <color name="bg_ditolak">#DA1D00</color>
