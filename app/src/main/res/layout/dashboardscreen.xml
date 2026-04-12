@@ -10,10 +10,11 @@
     tools:context=".DashboardScreen"
     android:background="@color/bcolorMain">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="24dp">
+        android:paddingBottom="24dp"
+        android:fillViewport="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,12 +64,10 @@
                         android:layout_columnSpan="1"
                         android:layout_columnWeight="1"
                         android:layout_marginStart="12dp"
-
                         android:layout_marginTop="12dp"
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/table_border"
-
                         android:clipToOutline="true"
                         android:columnCount="2"
                         tools:ignore="TextSizeCheck">
@@ -79,22 +78,17 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/poppins_bold"
-
                             android:text="@string/total_laporan"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
                         <View
                             android:id="@+id/line_total_laporan"
                             android:layout_width="match_parent"
                             android:layout_height="2.5dp"
                             android:background="@color/borderColor"
-
                             app:layout_constraintTop_toBottomOf="@id/text_total_laporan" />
-
                         <TextView
                             android:id="@+id/total_laporan"
                             android:layout_width="wrap_content"
@@ -104,12 +98,10 @@
                             android:fontFamily="@font/poppins_bold"
                             android:includeFontPadding="false"
                             android:text="@string/placeholder_num"
-
                             android:textColor="@color/white"
                             android:textSize="44sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/line_total_laporan" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -117,11 +109,8 @@
                             android:text="@string/total_laporan"
                             android:textColor="@color/white"
                             android:textSize="18sp"
-
                             app:layout_constraintStart_toStartOf="@id/total_laporan"
                             app:layout_constraintTop_toBottomOf="@id/total_laporan" />
-
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
@@ -130,15 +119,12 @@
                         android:layout_columnSpan="1"
                         android:layout_columnWeight="1"
                         android:layout_marginStart="5dp"
-
                         android:layout_marginTop="12dp"
                         android:layout_marginEnd="12dp"
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/table_border"
-
                         android:clipToOutline="true"
                         android:columnCount="2">
-
                         <TextView
                             android:id="@+id/text_laporan_baru"
                             android:layout_width="wrap_content"
@@ -146,23 +132,17 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/poppins_bold"
-
                             android:text="@string/laporan_baru"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
                         <View
                             android:id="@+id/line_laporan_baru"
                             android:layout_width="match_parent"
                             android:layout_height="2.5dp"
                             android:background="@color/borderColor"
-
-                            app:layout_constraintTop_toBottomOf="@id/text_laporan_baru"
-                            />
-
+                            app:layout_constraintTop_toBottomOf="@id/text_laporan_baru"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -172,13 +152,10 @@
                             android:textColor="@color/white"
                             android:id="@+id/laporan_baru"
                             android:includeFontPadding="false"
-
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/line_laporan_baru"
                             android:layout_marginTop="8dp"
-                            android:layout_marginStart="22dp"
-                            />
-
+                            android:layout_marginStart="22dp"/>
                         <TextView
                             android:layout_width="112dp"
                             android:layout_height="wrap_content"
@@ -186,12 +163,9 @@
                             android:textSize="11sp"
                             android:fontFamily="@font/poppins_bold"
                             android:textColor="@color/white"
-
                             app:layout_constraintTop_toBottomOf="@id/laporan_baru"
                             app:layout_constraintStart_toStartOf="@id/laporan_baru"
-                            android:layout_marginEnd="22dp"
-                            />
-
+                            android:layout_marginEnd="22dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
@@ -200,15 +174,12 @@
                         android:layout_columnSpan="1"
                         android:layout_columnWeight="1"
                         android:layout_marginStart="12dp"
-
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/table_border"
-
                         android:clipToOutline="true"
                         android:columnCount="2">
-
                         <TextView
                             android:id="@+id/text_diproses"
                             android:layout_width="wrap_content"
@@ -216,23 +187,17 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/poppins_bold"
-
                             android:text="@string/diproses"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
                         <View
                             android:id="@+id/line_diproses"
                             android:layout_width="match_parent"
                             android:layout_height="2.5dp"
                             android:background="@color/borderColor"
-
-                            app:layout_constraintTop_toBottomOf="@id/text_diproses"
-                            />
-
+                            app:layout_constraintTop_toBottomOf="@id/text_diproses"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -242,13 +207,10 @@
                             android:textColor="@color/white"
                             android:id="@+id/diproses"
                             android:includeFontPadding="false"
-
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/line_diproses"
                             android:layout_marginTop="8dp"
-                            android:layout_marginStart="22dp"
-                            />
-
+                            android:layout_marginStart="22dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -256,12 +218,8 @@
                             android:textSize="14sp"
                             android:fontFamily="@font/poppins_bold"
                             android:textColor="@color/white"
-
                             app:layout_constraintTop_toBottomOf="@id/diproses"
-                            app:layout_constraintStart_toStartOf="@id/diproses"
-                            />
-
-
+                            app:layout_constraintStart_toStartOf="@id/diproses"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
@@ -270,15 +228,12 @@
                         android:layout_columnSpan="1"
                         android:layout_columnWeight="1"
                         android:layout_marginStart="5dp"
-
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="12dp"
                         android:layout_marginBottom="5dp"
                         android:background="@drawable/table_border"
-
                         android:clipToOutline="true"
                         android:columnCount="2">
-
                         <TextView
                             android:id="@+id/text_selesai"
                             android:layout_width="wrap_content"
@@ -286,23 +241,17 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/poppins_bold"
-
                             android:text="@string/selesai"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
                         <View
                             android:id="@+id/line_selesai"
                             android:layout_width="match_parent"
                             android:layout_height="2.5dp"
                             android:background="@color/borderColor"
-
-                            app:layout_constraintTop_toBottomOf="@id/text_selesai"
-                            />
-
+                            app:layout_constraintTop_toBottomOf="@id/text_selesai"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -312,13 +261,10 @@
                             android:textColor="@color/white"
                             android:id="@+id/selesai"
                             android:includeFontPadding="false"
-
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/line_selesai"
                             android:layout_marginTop="8dp"
-                            android:layout_marginStart="22dp"
-                            />
-
+                            android:layout_marginStart="22dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -326,12 +272,8 @@
                             android:textSize="14sp"
                             android:fontFamily="@font/poppins_bold"
                             android:textColor="@color/white"
-
                             app:layout_constraintTop_toBottomOf="@id/selesai"
-                            app:layout_constraintStart_toStartOf="@id/selesai"
-                            />
-
-
+                            app:layout_constraintStart_toStartOf="@id/selesai"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
@@ -340,16 +282,13 @@
                         android:layout_columnSpan="1"
                         android:layout_columnWeight="1"
                         android:layout_marginStart="12dp"
-
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="12dp"
                         android:background="@drawable/table_border"
-
                         android:clipToOutline="true"
                         android:columnCount="2"
                         tools:ignore="TextSizeCheck">
-
                         <TextView
                             android:id="@+id/text_ditolak"
                             android:layout_width="wrap_content"
@@ -357,22 +296,17 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/poppins_bold"
-
                             android:text="@string/ditolak"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
                         <View
                             android:id="@+id/line_ditolak"
                             android:layout_width="match_parent"
                             android:layout_height="2.5dp"
                             android:background="@color/borderColor"
-
                             app:layout_constraintTop_toBottomOf="@id/text_ditolak" />
-
                         <TextView
                             android:id="@+id/ditolak"
                             android:layout_width="wrap_content"
@@ -382,12 +316,10 @@
                             android:fontFamily="@font/poppins_bold"
                             android:includeFontPadding="false"
                             android:text="@string/placeholder_num"
-
                             android:textColor="@color/white"
                             android:textSize="44sp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/line_ditolak" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -395,10 +327,8 @@
                             android:text="@string/laporan_ditolak"
                             android:textColor="@color/white"
                             android:textSize="14sp"
-
                             app:layout_constraintStart_toStartOf="@id/ditolak"
                             app:layout_constraintTop_toBottomOf="@id/ditolak" />
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
@@ -420,30 +350,23 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="8dp"
                             android:fontFamily="@font/poppins_bold"
-
                             android:text="@string/atur_cept"
                             android:textColor="@color/white"
                             android:textSize="15sp"
-
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
-
                         <View
                             android:id="@+id/line_atur_cept"
                             android:layout_width="match_parent"
                             android:layout_height="2.5dp"
                             android:background="@color/borderColor"
-
-                            app:layout_constraintTop_toBottomOf="@id/text_atur_cept"
-                            />
-
+                            app:layout_constraintTop_toBottomOf="@id/text_atur_cept"/>
                         <Button
                             android:id="@+id/buat_laporan_button"
                             android:layout_width="wrap_content"
                             android:layout_height="35dp"
                             android:background="@drawable/buat_laporan_button"
                             app:backgroundTint="@null"
-
                             android:text="@string/buat_laporan_baru"
                             android:textColor="@color/white"
                             android:textSize="15sp"
@@ -451,21 +374,16 @@
                             android:fontFamily="@font/poppins_bold"
                             android:includeFontPadding="false"
                             android:gravity="center"
-
                             app:layout_constraintTop_toBottomOf="@id/line_atur_cept"
                             app:layout_constraintStart_toStartOf="parent"
-                            android:paddingVertical="0dp"
-                            android:paddingHorizontal="10dp"
                             android:layout_marginStart="12dp"
-                            android:layout_marginTop="17dp"
-                            />
+                            android:layout_marginTop="17dp"/>
                         <Button
                             android:id="@+id/lihat_semua_button"
                             android:background="@drawable/table_border"
                             android:layout_width="wrap_content"
                             android:layout_height="35dp"
                             app:backgroundTint="@null"
-
                             android:text="@string/lihat_semua"
                             android:textColor="@color/white"
                             android:textSize="15sp"
@@ -481,14 +399,12 @@
                             android:paddingHorizontal="10dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginStart="12dp"
-                            android:layout_marginBottom="17dp"
-                            />
-
-
-
+                            android:layout_marginBottom="17dp"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </GridLayout>
-                <GridLayout
+
+                <!-- Laporan Terakhir -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="11dp"
@@ -497,11 +413,11 @@
                     android:paddingBottom="5dp"
                     android:background="@drawable/br15"
                     android:clipToOutline="true"
-                    android:columnCount="1"
-                    android:rowCount="5">
+                    android:orientation="vertical">
+
                     <TextView
-                        android:layout_rowSpan="1"
-                        android:layout_columnSpan="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
                         android:text="Laporan Terakhir"
                         android:textColor="@color/white"
@@ -510,107 +426,22 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2.5dp"
-                        android:layout_rowSpan="1"
-                        android:layout_columnSpan="1"
                         android:background="@color/borderColor"/>
-                    <LinearLayout
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_laporan"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingHorizontal="14dp"
-                        android:paddingVertical="11dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_columnSpan="1"
-                        android:layout_rowSpan="1"
-                        android:background="@drawable/br18_prioritas"
-                        android:orientation="vertical">
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:id="@+id/kode_laporan"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/rpt_2026_000031"
-                                android:layout_weight="1"
-                                android:textSize="16sp"
-                                android:textColor="@color/white"
-                                android:fontFamily="@font/poppins_bold"/>
-                            <TextView
-                                android:id="@+id/dibuat_pada"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/_2026_01_12_09_22_12"
-                                android:textSize="16sp"
-                                android:textColor="@color/white_email"
-                                android:fontFamily="@font/poppins_regular"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:id="@+id/judul"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/pencemaran"
-                                android:layout_weight="1"
-                                android:textSize="16sp"
-                                android:textColor="@color/white"
-                                android:fontFamily="@font/poppins_bold"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/tinggi"
-                                android:textSize="12sp"
-                                android:textColor="@color/white"
-                                android:background="@drawable/br18_prioritas"
-                                android:paddingHorizontal="12dp"
-                                android:paddingVertical="5dp"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/selesai"
-                                android:textSize="12sp"
-                                android:textColor="@color/white"
-                                android:background="@drawable/br18_status_selesai"
-                                android:paddingHorizontal="12dp"
-                                android:paddingVertical="5dp"/>
-                            <Space
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"/>
-                            <TextView
-                                android:id="@+id/btn_Detail"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/detail"
-                                android:textSize="14sp"
-                                android:textColor="@color/white"
-                                android:background="@drawable/br12"
-                                android:paddingHorizontal="17dp"
-                                android:paddingVertical="7dp"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                </GridLayout>
+                        android:minHeight="200dp"
+                        android:clipToPadding="false"
+                        android:paddingBottom="8dp"
+                        android:nestedScrollingEnabled="false"/>
+
+                </LinearLayout>
+
             </LinearLayout>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/cp_footer"
-                android:textSize="20sp"
-                android:textColor="@color/white_email"
-                android:textAlignment="center"/>
         </LinearLayout>
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
     <RelativeLayout
         android:layout_width="320dp"
         android:layout_height="match_parent"

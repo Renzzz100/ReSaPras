@@ -17,6 +17,9 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.ReSaPras">
         <activity
+            android:name=".DetaillaporanScreen"
+            android:exported="false" />
+        <activity
             android:name=".BuatLaporanScreen"
             android:exported="false" />
         <activity
@@ -33,8 +36,12 @@
             android:exported="false" />
         <activity
             android:name=".LoginScreen"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+            android:theme="@style/Theme.Splash"
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

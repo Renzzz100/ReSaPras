@@ -1,18 +1,16 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    kotlin("plugin.serialization") version "2.0.21"
 }
+
+val localProperties = Properties()
+localProperties.load(rootProject.file("local.properties").inputStream())
 
 android {
     namespace = "com.example.resapras"
-    compileSdk {
-        version = release(36)
-    }
-
-    buildFeatures {
-        buildConfig = true
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.resapras"
@@ -20,11 +18,13 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "SUPABASE_KEY", "\"${localProperties["SUPABASE_KEY"]}\"")
+    }
 
-        buildConfigField("String", "SUPABASE_URL", "\"${project.findProperty("SUPABASE_URL")}\"")
-        buildConfigField("String", "SUPABASE_KEY", "\"${project.findProperty("SUPABASE_KEY")}\"")
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {
@@ -55,16 +55,12 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-
-    implementation(platform("io.github.jan-tennert.supabase:bom:3.3.0"))
-
-    // Pilih modul yang dibutuhkan
-    implementation("io.github.jan-tennert.supabase:postgrest-kt") // Database
-    implementation("io.github.jan-tennert.supabase:auth-kt")      // Login/Auth
-
-    // HTTP Client (Pilih salah satu, OkHttp disarankan untuk Android)
-    implementation("io.ktor:ktor-client-okhttp")
-
-    // Serialization (Penting untuk parsing data)
-    implementation("io.github.jan-tennert.supabase:compose-auth") // Jika pakai Compose
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+    implementation(platform("io.github.jan-tennert.supabase:bom:3.0.3"))
+    implementation("io.github.jan-tennert.supabase:postgrest-kt")
+    implementation("io.github.jan-tennert.supabase:auth-kt")
+    implementation("io.github.jan-tennert.supabase:realtime-kt")
+    implementation("io.ktor:ktor-client-okhttp:3.0.3")
 }
