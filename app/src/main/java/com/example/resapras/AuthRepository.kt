@@ -7,6 +7,7 @@ import io.github.jan.supabase.auth.providers.builtin.Email
 import io.github.jan.supabase.auth.user.UserSession
 import io.github.jan.supabase.postgrest.from
 import io.github.jan.supabase.postgrest.query.Columns
+import io.github.jan.supabase.postgrest.query.filter.FilterOperator.EQ
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 import kotlinx.serialization.Serializable
@@ -39,7 +40,6 @@ class AuthRepository(private val context: Context? = null) {
         var userRole = "siswa"
 
         try {
-            // Query dengan kolom "peran"
             val result = supabase.from("pengguna")
                 .select(columns = Columns.list("username", "peran")) {
                     filter { eq("email", userEmail) }
@@ -65,28 +65,53 @@ class AuthRepository(private val context: Context? = null) {
         sessionManager?.saveRole(userRole)
         android.util.Log.d("AuthRepo", "Role saved: $userRole")
     }
-    suspend fun register(email: String, password: String, nama: String, noHp: String) {
-        // ... kode sign up ...
 
+    suspend fun register(email: String, password: String, nama: String, noHp: String) {
+        // 1. Sign up + simpan nama & noHp ke user_metadata
+        supabase.auth.signUpWith(Email) {
+            this.email = email
+            this.password = password
+            data = buildJsonObject {
+                put("display_name", nama)
+                put("phone", noHp)
+            }
+        }
+
+        // 2. Login agar session aktif
+        supabase.auth.signInWith(Email) {
+            this.email = email
+            this.password = password
+        }
+
+        // 3. Insert ke tabel pengguna (session sudah aktif)
         val username = email.substringBefore("@")
         try {
-            // Insert dengan kolom "peran"
             supabase.from("pengguna").insert(
                 mapOf(
                     "nama" to nama,
                     "username" to username,
                     "email" to email,
                     "no_hp" to noHp,
-                    "peran" to "siswa"  // Gunakan "peran" bukan "role"
+                    "peran" to "siswa"
                 )
             )
         } catch (e: Exception) {
             android.util.Log.e("RepoDebug", "Insert pengguna gagal: ${e.message}", e)
         }
 
-        // ... kode session ...
+        // 4. Simpan session lokal
+        val session = supabase.auth.currentSessionOrNull()
+        sessionManager?.saveSession(
+            accessToken  = session?.accessToken ?: "",
+            refreshToken = session?.refreshToken ?: "",
+            username     = username,
+            email        = email,
+            userId       = session?.user?.id ?: ""
+        )
+
         sessionManager?.saveRole("siswa")
     }
+
     suspend fun logout() {
         supabase.auth.signOut()
         sessionManager?.clearSession()
@@ -98,7 +123,6 @@ class AuthRepository(private val context: Context? = null) {
             val refreshToken = sessionManager?.getRefreshToken() ?: return
             if (accessToken.isEmpty() || refreshToken.isEmpty()) return
 
-            // Import session ke Supabase Auth menggunakan token yang tersimpan
             supabase.auth.importSession(
                 UserSession(
                     accessToken = accessToken,
@@ -112,18 +136,12 @@ class AuthRepository(private val context: Context? = null) {
                 autoRefresh = true
             )
         } catch (_: Exception) {
-            // Jika restore gagal (token expired), biarkan user login ulang
             sessionManager?.clearSession()
         }
     }
 
-    /**
-     * Ambil data profil pengguna dari tabel pengguna.
-     * Fallback ke email dari SessionManager jika Supabase auth session tidak aktif.
-     */
     suspend fun getCurrentUserProfile(): Pair<String, String>? {
         return try {
-            // Coba dari Supabase auth, jika null gunakan email dari SessionManager
             val userEmail = supabase.auth.currentUserOrNull()?.email
                 ?: sessionManager?.getEmail()
                 ?: return null
@@ -144,7 +162,6 @@ class AuthRepository(private val context: Context? = null) {
         }
     }
 
-
     suspend fun getFullProfile(): Pengguna? {
         return try {
             val user = supabase.auth.currentUserOrNull() ?: return null
@@ -156,7 +173,7 @@ class AuthRepository(private val context: Context? = null) {
                     else it.toString().trim('"')
                 } ?: "-"
 
-            val noHp = metadata?.get("phone")  // ← ganti dari "no_hp" ke "phone"
+            val noHp = metadata?.get("phone")
                 ?.let {
                     if (it is kotlinx.serialization.json.JsonPrimitive) it.content
                     else it.toString().trim('"')
@@ -175,15 +192,13 @@ class AuthRepository(private val context: Context? = null) {
     fun getCurrentUser() = supabase.auth.currentUserOrNull()
 
     fun isLoggedIn(): Boolean {
-        // Cek dari Supabase session
         if (supabase.auth.currentUserOrNull() != null) return true
-        // Fallback: cek dari local session
         return sessionManager?.isLoggedIn() == true
     }
+
     fun getAccessToken(): String? {
         return supabase.auth.currentSessionOrNull()?.accessToken
     }
-
 
     suspend fun getLaporan(): List<Laporan> {
         return supabase.from("laporan")
@@ -193,5 +208,6 @@ class AuthRepository(private val context: Context? = null) {
             }
             .decodeList<Laporan>()
     }
+
     fun getSessionManager(): SessionManager? = sessionManager
 }
