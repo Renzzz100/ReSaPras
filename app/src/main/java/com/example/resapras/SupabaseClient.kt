@@ -15,7 +15,6 @@ object SupabaseClientProvider {
         install(Postgrest)
         install(Storage)
         install(Auth) {
-            // Aktifkan penyimpanan session secara otomatis
             autoSaveToStorage = true
             autoLoadFromStorage = true
             alwaysAutoRefresh = true
